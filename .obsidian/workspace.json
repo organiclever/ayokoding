@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "746d6521b86c1dce",
+        "id": "5460831b77485d3e",
         "type": "tabs",
         "children": [
           {
-            "id": "68e4e09e36646257",
+            "id": "1bdfe736dc80eed4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-01-19.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-01-19.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-01-19.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2023-01-19.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -147,10 +139,10 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "68e4e09e36646257",
+  "active": "0be1babbdd61add4",
   "lastOpenFiles": [
+    "2023-01-19.md",
     "AyoKoding.md",
-    "Untitled.canvas",
-    "2023-01-19.md"
+    "Untitled.canvas"
   ]
 }
