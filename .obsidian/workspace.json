@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "b3028e4622b9ebd5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-01-19.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -160,7 +147,7 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "b3028e4622b9ebd5",
+  "active": "68e4e09e36646257",
   "lastOpenFiles": [
     "AyoKoding.md",
     "Untitled.canvas",
