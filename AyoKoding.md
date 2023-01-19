@@ -1,1 +1,3 @@
-Hi there! Welcome to [[AyoKoding]]!
+public:: true
+
+- Hi there! Welcome to [[AyoKoding]]!
