@@ -1,3 +1,3 @@
 - Hi there! This is AyoKoding!
 - This is still empty, but I hope that this will be filled later!
-- {{video }}
+- {{video https://www.youtube.com/watch?v=YR5WdGrpoug}}
