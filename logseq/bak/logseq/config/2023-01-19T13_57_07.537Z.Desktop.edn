@@ -28,7 +28,7 @@
  ;; :ui/show-brackets? true
 
  ;; Enable showing the body of blocks when referencing them.
- :ui/show-full-blocks? true
+ :ui/show-full-blocks? false
 
  ;; Enable Block timestamp
  :feature/enable-block-timestamps? false
@@ -318,6 +318,4 @@
  ;;     ;use Percent-encoding for other invalid characters
  :file/name-format :triple-lowbar
  :journal/page-title-format "EEEE, dd-MM-yyyy"
- :editor/preferred-pasting-file? true
- :publishing/all-pages-public? true
  }
