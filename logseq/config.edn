@@ -320,4 +320,6 @@
  :journal/page-title-format "EEEE, dd-MM-yyyy"
  :editor/preferred-pasting-file? true
  :publishing/all-pages-public? true
+ :feature/enable-journals? false
+ :default-home {:page "AyoKoding"}
  }
