@@ -38,9 +38,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "90ce3f965c635a5f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-01-19.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -168,7 +180,7 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "active": "f584d64bd63b144e",
+  "active": "90ce3f965c635a5f",
   "lastOpenFiles": [
     "2023-01-19.md",
     "AyoKoding.md",
