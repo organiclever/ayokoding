@@ -1,3 +1,2 @@
 - Let's talk about engineering manager role!
 - Is it hard? [[AyoKoding]]
--
