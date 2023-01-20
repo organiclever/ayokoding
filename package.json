@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.3.1",
   "license": "MIT",
   "scripts": {
-    "prepare": "yarn husky install && echo installed"
+    "prepare": "husky install && echo installed"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx,css,md,json,yml,yaml}": "npx prettier --write"
