@@ -323,4 +323,5 @@
  :feature/enable-journals? false
  :default-home {:page "AyoKoding"}
  :feature/enable-flashcards? false
+ :ui/show-brackets? false
  }
