@@ -11,5 +11,9 @@
   "devDependencies": {
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0"
+  },
+  "volta": {
+    "node": "18.13.0",
+    "npm": "9.3.1"
   }
 }
