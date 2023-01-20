@@ -1,6 +1,6 @@
 type:: content
 content-series:: [[Cerita Programmer]]
-channels:: [[YouTube]]
+content/channels:: [[YouTube]]
 
 - Hi there! Welcome to AyoKoding!
 - Test some

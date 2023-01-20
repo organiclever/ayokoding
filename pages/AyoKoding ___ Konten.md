@@ -1,2 +1,4 @@
-- [[Cerita Programmer]]
-  - {{query (and (page-property type "content") (page-property content-series "Cerita Programmer")) }}
+- {{query (page-property type "content") }}
+  query-sort-by:: page
+  query-sort-desc:: true
+-
