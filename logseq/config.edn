@@ -114,7 +114,7 @@
  ;; {:editor/new-block       "enter"
  ;;  :editor/new-line        "shift+enter"
  ;;  :editor/insert-link     "mod+shift+k"
- ;;  :editor/hightlight       false
+;;   :editor/hightlight       false
  ;;  :ui/toggle-settings     "t s"
  ;;  :editor/up              ["ctrl+k" "up"]
  ;;  :editor/down            ["ctrl+j" "down"]
@@ -323,5 +323,4 @@
  :feature/enable-journals? false
  :default-home {:page "AyoKoding"}
  :feature/enable-flashcards? false
- :ui/show-brackets? false
- }
+ :ui/show-brackets? true}

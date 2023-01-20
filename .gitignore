@@ -5,3 +5,4 @@ node_modules
 .pnp.loader.mjs
 logseq/.recycle/**
 logseq/bak/**
+.clj-kondo
