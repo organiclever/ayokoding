@@ -7,7 +7,11 @@
   --ls-tag-text-hover-opacity: 0.8;
   --ls-page-text-size: 1em;
   --ls-page-title-size: 36px;
+  --ct-code-font-family: 'Fira Code', Monaco, Menlo, Consolas, 'COURIER NEW',
+    monospace;
+  font-variant-ligatures: contextual;
 }
+
 .dark-theme,
 html[data-theme='dark'] {
   --ls-primary-background-color: #202124;
@@ -387,6 +391,7 @@ html ::-webkit-scrollbar-thumb:hover {
   font-size: 85%;
   font-family: MonoLisa, 'Fira Code', Monaco, Menlo, Consolas, 'COURIER NEW',
     monospace;
+  font-variant-ligatures: contextual;
   padding: 0.2em 0.4em !important;
   color: #eb5757;
   background-color: var(--ls-page-inline-code-bg-color);
