@@ -322,4 +322,5 @@
  :publishing/all-pages-public? true
  :feature/enable-journals? false
  :default-home {:page "AyoKoding"}
+ :feature/enable-flashcards? false
  }
