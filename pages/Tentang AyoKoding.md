@@ -1,2 +1,0 @@
-- Hai guys! Selamat datang di [[AyoKoding]]! Sebuah web yang berisikan tentang kehidupan sehari-hari programmer dan yang berhubungan dengan itu. Website ini dipublish karena gw punya mimpi untuk bikin satu sumber yang bisa kita pake buat belajar koding.
-- Nama gw [[Wahidyan Kresna Fridayoka (Yoka)]] dan gw sekarang kerja di salah satu fintech syariah yang ada di Indonesia (yang cuman 4 hari kerja itu).

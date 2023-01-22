@@ -6,16 +6,14 @@
   - Advanced query with "simple" query
     - ```clojure
       #+BEGIN_QUERY
-      {
-      :title "Content"
-      :query (and (page-property type "content") (page-property content-series "Jam Kantor"))}
+      { :title "Content"
+        :query (and (page-property type "content") (page-property content-series "Jam Kantor"))}
       #+END_QUERY
       ```
   - Advanced query with clojure function
     - ```clojure
       #+BEGIN_QUERY
-      {
-      	:title 	"Daftar konten yang ada di ayokoding"
+      { :title 	"Daftar konten yang ada di ayokoding"
       	:query 	[:find (pull ?p [*])
       	:where
             [?p :block/name ?name]
@@ -25,17 +23,34 @@
   - Advanced query with multiple filter
     - ```clojure
       #+BEGIN_QUERY
-        {
-        :title "Content"
-        :query [
-          :find (pull ?p [*])
-          :in $ ?search-term
-          :where
-            [?p :block/properties ?props]
-            [(get ?props :type) ?pt]
-            [(= ?pt "content")]
-            [(get ?props :content-series) ?cs]
-            [(= ?cs ?search-term)]]
-        :inputs ["jam-kantor"]}
+        { :title "Content"
+          :query [
+            :find (pull ?p [*])
+            :in $ ?search-term
+            :where
+              [?p :block/properties ?props]
+              [(get ?props :type) ?pt]
+              [(= ?pt "content")]
+              [(get ?props :content-series) ?cs]
+              [(= ?cs ?search-term)]]
+          :inputs ["jam-kantor"]}
+      #+END_QUERY
+      ```
+  - Advanced query with multiple filters and sorting
+    - ```clojure
+      query-sort-by:: updated-at
+      query-sort-desc:: true
+      query-properties:: [:page]
+      query-table:: true
+      #+BEGIN_QUERY
+      { :title "List"
+        :query (and
+          (page-property type "content")
+          (page-property lang "en"))
+        :result-transform (fn [result]
+          (->> result
+            (sort-by (fn [h]
+            (get-in h [:block/created-at])))
+            (take 10)))}
       #+END_QUERY
       ```
