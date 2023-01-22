@@ -1,7 +1,8 @@
-type:: content
+content-channels:: [[YouTube]]
 content-origin:: internal
 content-series:: [[Jam Kantor]]
-content-channels:: [[YouTube]]
+content-status:: [[WIP]]
 lang:: id
+type:: content
 
 -

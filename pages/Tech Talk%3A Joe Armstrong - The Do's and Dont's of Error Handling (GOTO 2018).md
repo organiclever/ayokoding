@@ -1,9 +1,9 @@
-type:: content
-lang:: en
+content-channels:: [[YouTube]]
 content-origin:: external
 content-series:: [[Cerita Programmer]]
-content-channels:: [[YouTube]]
-content-status:: wip
+content-status:: [[WIP]]
+lang:: en
+type:: content
 
 - {{video https://www.youtube.com/watch?v=TTM_b7EJg5E}}
 - Topics
