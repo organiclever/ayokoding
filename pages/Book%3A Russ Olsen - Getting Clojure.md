@@ -237,6 +237,9 @@ type:: content
   - Sets
     - Clojure Sets are all about membership
     - Sets have their own ideas about the order of their elements
+  - Keep in mind that in expressions like `(:author book)` or `(:sci-fi genres)`, the keywords `:author` and `:sci-fi` aren’t just pretending to be functions. They are functions—functions that look themselves up in a map or a set. It is very common, if a bit confusing to beginners, to see a keyword like `:title` in a context where a function is clearly called for. In those situations, you can bet that there is either a map or a set involved.
+  - Wrapping up
+    - We are now done with Clojure's basic data structures!
   - Code snippets
     - ```clojure
       (ns follow-along.c03-maps-keywords-and-sets)
@@ -355,6 +358,51 @@ type:: content
       ;; => #{"King" "Dickens" "Clarke" "Austen"}
       (disj more-authors "King")
       ;; => #{"Dickens" "Clarke" "Austen"}
+
+
+      ;; Staying out of trouble
+
+
+      (= :title "title")
+      ;; => false
+      (= (book "title") (book :title))
+      ;; => false
+      (assoc book "title" "Pride and Prejudice")
+      ;; => {:title "Oliver Twist", :author "Dickens", :published 1838, "title" "Pride and Prejudice"}
+
+
+      (book :some-key-that-is-clearly-not-there)
+      ;; => nil
+
+
+      (def anonymous-book {:title "The Arabian Nights" :author nil})
+      (anonymous-book :author)
+      ;; => nil
+      (contains? anonymous-book :title)
+      ;; => true
+      (contains? anonymous-book :author)
+      ;; => true
+      (contains? anonymous-book :favorite-color)
+      ;; => false
+
+
+      (def possible-authors #{"Austen" "Dickens" nil})
+      (contains? possible-authors "Austen")
+      ;; => true
+      (contains? possible-authors "King")
+      ;; => false
+      (contains? possible-authors nil)
+      ;; => true
+
+      book
+      ;; => {:title "Oliver Twist", :author "Dickens", :published 1838}
+      (first book)
+      ;; => [:title "Oliver Twist"]
+      (rest book)
+      ;; => ([:author "Dickens"] [:published 1838])
+      (count book)
+      ;; => 3
+
       ```
 - Chapter 4 - Logic
 - Chapter 5 - More Capable Functions
