@@ -7,7 +7,7 @@ type:: content
 
 - {{video https://www.youtube.com/watch?v=TTM_b7EJg5E}}
 - Topics
-  - [[Fault Tolerant]]
+  - [[Fault-tolerant]]
   - [[Error Handling]]
   - [[Erlang]]
 - Related links
@@ -32,6 +32,73 @@ type:: content
     - How the computers are interconnected and the protocols used between the computers is the significant problem.
     - We want the same way to program large and small scale systems
   - Message passing is inevitable
+    - ((63ce685f-9016-4db6-ae18-910474b3d68b))
+    - [[C.A.R. Hoare - Communicating Sequential Processes\ (CSP)]]
+    - [[Erlang]]
+      - Derived from [[Smalltalk]] and [[Prolog]] (influences by ideas from [[C.A.R. Hoare - Communicating Sequential Processes\ (CSP)]] )
+      - Unifies ideas on concurrent and functional programming.
+      - Follows laws of physics ([[Asynchronous Messaging]])
+      - Designed for programming [[Fault-tolerant]] systems.
+    - Building [[Fault-tolerant]] software boils down to detecting errors and doing something when errors are detected.
+    - Types of errors
+      - Errors that can be detected at compile-time
+      - Errors that can be detected at run-time
+      - Errors that can be inferred
+      - Reproducible errors
+      - Non-reproducible errors
+    - Philisophy
+      - Find methods to prove software correct at compile-time.
+      - Assume the software is incorrect and will fail at run time then do something about it at run-time.
+    - Evidence for software failure is all around us.
+    - Proving the self-consistency of small programs will not help
+    - Proving things is difficult
+      - Prove the [[Collatz conjecture]] (also known as the [[Ulam conjecture]], [[Kakutani’s problem]] , [[Thwaites conjecture]] , [[Hasse’s algorithm]] , or the [[Syracuse problem]])
+      - [[3N+1]]
+        - If N is odd, replace it by 3N+1
+        - If N is even, replace it by N/2
+        - [[Collatz conjecture]]
+          - This process will eventually reach the number 1, for all starting values on N.
+      - Conclusion
+        - Some small things can be proven to be self-consistent.
+        - Large assemblies of small things are impossible to prove correct.
+    - [[Erlang]] Timeline
+    - [[Viking Program]]
+      - Incorrect software is not an option
+    - Types of system
+      - Highly reliable
+        - Example
+          - Nuclear power plant control
+          - Air traffic
+          - Satellite
+        - Very expensive if they fail
+      - Reliable
+        - Example
+          - Driverless cars
+        - Moderately expensive if they fail. Kills people if they fail
+      - Reliable
+        - Example
+          - Banks
+          - Telephone
+        - Annoys people if they fail.
+      - Dodgy
+        - Example
+          - Internet
+          - HBO
+          - Netflix
+        - Cross if they fail
+      - Crap
+        - Example
+          - Free apps
+        - Very cross if they fail
+    - How can we make software that works reasonably well even if there are errors in the software?
+      - [[Joe Armstrong - Making reliable distributed systems in the presence of software errors]]
+    - Requirements
+      - R1 - Concurrency
+      - R2 - Error encapsulation
+      - R3 - Fault detection
+      - R4 - Fault identification
+      - R5 - Code upgrade
+      - R6 - Stable storage
     - #wip
   - What's the big deal about concurrency?
     - #WIP
