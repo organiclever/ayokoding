@@ -1,4 +1,3 @@
-content-channels:: [[YouTube]]
 content-origin:: external
 content-status:: wip
 content-authors:: [[Priscilia Heller]]
