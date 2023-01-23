@@ -1,4 +1,2 @@
 - References
   - [Erlang Download - Joe Armstrong Theses](https://erlang.org/download/armstrong_thesis_2003.pdf)
-- ![Joe Armstrong - Making Reliable Distributed Systems in The Presence of Software Errors (2003).pdf](<../assets/Joe_Armstrong_-_Making_Reliable_Distributed_Systems_in_The_Presence_of_Software_Errors_(2003)_1674472804225_0.pdf>)
--
