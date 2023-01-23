@@ -7,6 +7,10 @@ type:: content
 - Topics
   - [[GitHub Actions]]
   - [[CI/CD]]
+  - [[Continuous Integration (CI)]]
+  - [[Continuous Delivery (CD)]]
+- Tags
+  - [[Book]]
 - Publisher
   - [[Packt Publishing]]
 - #target-audience

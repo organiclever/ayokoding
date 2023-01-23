@@ -10,6 +10,8 @@ type:: content
   - [[Fault-tolerant]]
   - [[Error Handling]]
   - [[Erlang]]
+- Tags
+  - [[Tech Talk]]
 - Related links
   - [Original slide](https://files.gotocon.com/uploads/slides/conference_9/352/original/do_dont_error_handling.pdf)
 - Summary

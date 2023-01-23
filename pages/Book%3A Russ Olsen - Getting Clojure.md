@@ -6,6 +6,8 @@ type:: content
 
 - Topics
   - [[Clojure]]
+- Tags
+  - [[Book]]
 - Publishers
   - [[Pragmatic Bookshelf]]
 - #target-audience
