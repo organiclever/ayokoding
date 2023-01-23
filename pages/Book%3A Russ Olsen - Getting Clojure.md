@@ -15,6 +15,11 @@ type:: content
 - Read on
   - [[O'Reilly Book]]
     - https://www.oreilly.com/library/view/automating-workflows-with/9781800560406
+- #wkf-personal-remarks
+  - Pros
+    - Easy to follow
+    - There are "In the Wild" sections
+      - Explain to us about the recently explained stuff in the "real" codebase.
 - Table of Contents
   - Part 1: Basics
     - Chapter 1 - Hello, Clojure
@@ -120,13 +125,9 @@ type:: content
       (/ 100 0)
       ;; => Execution error (ArithmeticException) at follow-along.c01/eval8056 (form-init14787553069179530715.clj:75).
       ;;    Divide by zero
-
-      (.toUpperCase "test")
-      ;; => "TEST"
-      (.getName String)
-      ;; => "java.lang.String"
       ```
 - Chapter 2 - Vectors and Lists
+  - Vectors and Lists are immutable
   - Code snippets
     - ```clojure
       (ns follow-along.c02-vectors-and-lists)
@@ -224,3 +225,152 @@ type:: content
       ;; => ["Emma" "Coma" "War and Peace" "Jaws"]
       ```
 - Chapter 3 - Maps, Keywords, and Sets
+  - Maps
+    - [[Hash-map]]
+    - Maps is also immutable
+    - Associative Vectors
+      - Vectors and maps have a lot in common. They both associate keys with values, the difference being that with vectors the keys are limited to integers while in maps the keys can be more or less anything. That is, in fact, how Clojure looks at vectors—which means that many of the functions that work with maps will also work with vectors. For example, assoc and dissoc work fine on vectors. Thus `(assoc [:title :by :published] 1 :author)` will give you `[:title :author :published]`.
+    - The maps that you create with the literal `{}` or the `hash-map` function make no promises about the order of their keys.
+    - Clojure treats commas as whitespace.
+  - Keywords
+    - Technically, keywords are interned strings, similar to symbols in Ruby and distant cousins to the individual items that go into enumerated types in other languages.
+  - Sets
+    - Clojure Sets are all about membership
+    - Sets have their own ideas about the order of their elements
+  - Code snippets
+    - ```clojure
+      (ns follow-along.c03-maps-keywords-and-sets)
+
+      ;; This goes with that
+
+      {"title" "Oliver Twist" "author" "Dickens" "published" 1838}
+      ;; => {"title" "Oliver Twist", "author" "Dickens", "published" 1838}
+
+      (hash-map "title" "Oliver Twist"
+                "author" "Dickens"
+                "published" 1838)
+
+      (def book-arc
+        {"title" "Oliver Twist" "author" "Dickens" "published" 1838})
+      (get book-arc "published")
+      ;; => 1838
+      (book-arc "published")
+      ;; => 1838
+      (get book-arc "published?")
+      ;; => nil
+      (book-arc "published?")
+      ;; => nil
+
+
+      ;; Keywords
+
+
+      :title
+      ;; => :title
+      :author
+      ;; => :author
+      :published
+      ;; => :published
+      :word-count
+      ;; => :word-count
+      :preface&introduction
+      ;; => :preface&introduction
+      :chapter-1-and-2
+      ;; => :chapter-1-and-2
+
+
+      (def book
+        {:title "Oliver Twist"
+         :author "Dickens"
+         :published 1838})
+      (str "Title: " (book :title))
+      ;; => "Title: Oliver Twist"
+      (str "By: " (book :author))
+      ;; => "By: Dickens"
+      (str "Published: " (book :published))
+      ;; => "Published: 1838"
+      (str "Published: " (:published book))
+      ;; => "Published: 1838"
+
+
+      ;; Changing your map without changing it
+
+
+      (assoc book :page-count 362)
+      ;; => {:title "Oliver Twist", :author "Dickens", :published 1838, :page-count 362}
+      book
+      ;; => {:title "Oliver Twist", :author "Dickens", :published 1838}
+      (= book book)
+      ;; => true
+      (= book (assoc book :page-count 362))
+      ;; => false
+
+      (assoc book :page-count 362 :title "War & Peace")
+      ;; => {:title "War & Peace", :author "Dickens", :published 1838, :page-count 362}
+      (dissoc book :published)
+      ;; => {:title "Oliver Twist", :author "Dickens"}
+      (dissoc book :paperback :illustrator :favorite-zoo-animal)
+      ;; => {:title "Oliver Twist", :author "Dickens", :published 1838}
+      (= book (dissoc book :paperback :illustrator :favorite-zoo-animal))
+      ;; => true
+
+      ;; Assoc works on vectors too
+      (assoc [:title :by :published] 1 :author)
+      ;; => [:title :author :published]
+
+
+      ;; Other handy map functions
+
+
+      (keys book)
+      ;; => (:title :author :published)
+      (vals book)
+      ;; => ("Oliver Twist" "Dickens" 1838)
+
+
+      ;; Sets
+
+
+
+      (def genres #{:sci-fi :romance :mystery})
+      (def authors #{"Dickens" "Austen" "King"})
+
+      (contains? authors "Austen")
+      ;; => true
+      (contains? genres "Austen")
+      ;; => false
+
+      (authors "Austen")
+      ;; => "Austen"
+      (genres :historical)
+      ;; => nil
+
+      (:sci-fi genres)
+      ;; => :sci-fi
+      (:historical genres)
+      ;; => nil
+
+      (def more-authors (conj authors "Clarke"))
+      more-authors
+      ;; => #{"King" "Dickens" "Clarke" "Austen"}
+      (disj more-authors "King")
+      ;; => #{"Dickens" "Clarke" "Austen"}
+      ```
+- Chapter 4 - Logic
+- Chapter 5 - More Capable Functions
+- Chapter 6 - Functional Things
+- Chapter 7 - Let
+- Chapter 8 - Def, Symbols, Vars
+- Chapter 9 - Namespaces
+- Chapter 10 - Sequences
+- Chapter 11 - Lazy Sequences
+- Chapter 12 - Destructuring
+- Chapter 13 - Records and Protocols
+- Chapter 14 - Tests
+- Chapter 15 - Spec
+- Chapter 16 - Interoperating with Java
+- Chapter 17 - Threads, Promises, and Futures
+- Chapter 18 - State
+- Chapter 19 - Read and Eval
+- Chapter 20 - Macros
+- Chapter 21 - Conclusion
