@@ -1,6 +1,6 @@
 content-channels:: [[YouTube]]
 content-origin:: external
-content-status:: wip
+content-status:: done
 content-authors:: [[Joe Armstrong]]
 lang:: en
 type:: content
@@ -99,14 +99,8 @@ type:: content
       - R4 - Fault identification
       - R5 - Code upgrade
       - R6 - Stable storage
-    - #wip
   - What's the big deal about concurrency?
-    - #WIP
   - Why concurrent?
-    - #WIP
   - Detecting errors
-    - #WIP
   - Is that all?
-    - #WIP
   - How do we descript contracts?
-    - #wip
