@@ -1,0 +1,35 @@
+- Configuring Git
+  - We can see it in: `~/.gitconfig` or the `~/.config/git/config`
+  - Email and Password
+    - `git config --global user.name "Priscila Heller"`
+    - `git config --global user.email testesdapri@gmail.com`
+  - Default branch
+    - `git config --global init.defaultBranch main`
+  - Check config
+    - `git config --list`
+- Commands
+  - `git init`
+    - Transform a folder into [[Git]] repository.
+    - Will create `.git` folder in the destination folder.
+  - `git status`
+    - Check the status of the working repository.
+  - `git checkout`
+    - `git checkout -b <branch-name>`
+      - Create a branch and checkout to it.
+  - `git add`
+    - `git add .`
+      - Add changes to staging.
+  - `git commit`
+    - `git commit -m "your message goes here"`
+  - `git remote`
+    - `git remote add`
+      - Add connection from local repository to online/remote repository.
+    - `git remote -v`
+      - List remote repositories.
+  - `git push`
+    - `git push --set-upstream origin <new-branch>`
+      - Push the current branch and set the remote as upstream.
+  - `git pull`
+    - Incorporate the changes from the remote repository into the local repository.
+  - `git clone`
+    - Clone remote repository to local.

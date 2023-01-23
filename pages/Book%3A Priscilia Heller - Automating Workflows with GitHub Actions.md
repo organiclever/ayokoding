@@ -8,8 +8,13 @@ type:: content
 - Topics
   - [[GitHub Actions]]
   - [[CI/CD]]
+- Publisher
+  - [[Packt Publishing]]
 - #target-audience
   - [[Entry Level Programmer]]
+- Read on
+  - [[O'Reilly Book]]
+    - https://www.oreilly.com/library/view/automating-workflows-with/9781800560406/
 - Summary
   - Chapter 1 - learning the foundations of [[GitHub Actions]]
     - Introduces [[GitHub]], [[YAML]], and other concepts that are the foundation of [[GitHub Actions]]
@@ -32,4 +37,70 @@ type:: content
 - Resources
   - [Repository](https://github.com/PacktPublishing/Automating-Workflows-with-GitHub-Actions)
   - [Color Images](http://www.packtpub.com/sites/default/files/downloads/9781800560406_ColorImages.pdf)
-- ## Chapter 1 - Learning the Foundations for GitHub Actions
+- Chapter 1 - Learning the Foundations for GitHub Actions
+  - A brief trip through the history of software development
+    - [[Waterfall Model (SDLC)]]
+      - Software development started as a slow, cautious, and methodical practice that followed a sequence of steps aimed at delivering perfect products.
+      - Predominant between 1960s and 1980s.
+      - The Waterfall model is known for its inflexible, process-oriented, and sequential nature.
+      - Extensive and time-consuming planning and approvals
+    - [[Extreme Programming (XP)]]
+      - Reinforced the concept that tests should be written to describe how code should work, which was also the center of [[Test-Driven Development (TDD)]] practices.
+      - The early 1990s
+      - [[The Agile Manifesto]]
+        - The [[Agile Aliance]] was formed
+  - [[Continuous Integration (CI)]]
+    - Automated processes should be in place to test and build software many times a day.
+      - Important because bugs are commonly introduced at the intersection or integration of two different pieces of code
+  - [[Continuous Delivery (CD)]]
+    - CD follows in the footsteps of CI.
+    - It focuses on gathering all changes to code—such as new features, bug fixes, and configuration changes—and sending them to users—or production—as safely, sustainably, and quickly as possible.
+  - Introduction to GitHub: creating a user account
+    - Creating a free user account on [[GitHub]]
+    - Creating a [[Personal Access Token (PAT)]]
+      - Settings -> Token
+    - About SSH Keys
+    - Checking for existing SSH keys
+      - `ls -al ~/.ssh`
+    - Creating an SSH key
+      - `ssh-keygen -t ed25519 -C "your_email@example.com"`
+    - Adding the SSH key to the [[ssh-agent]]
+    - Adding your SSH key to your [[GitHub]] user account
+  - Discovering the basics of [[Git]] and [[GitHub]]
+    - Configuring [[Git]]
+    - Basic [[Git]] commands
+    - Basics of [[GitHub]]
+    - Pull requests
+    - Settings
+      - Allows us to configure most features within a repository.
+        - Branches
+        - Actions
+          - Related to [[GitHub Actions]]
+        - Secrets
+  - Introduction to [[YAML]]
+    - [[GitHub Actions]] must be written using the [[YAML]] syntax.
+      - https://github.com/actions/starter-workflows
+    - Basic rules
+      - Key-value pairs and case sensitivity
+      - Indentation and the use of tabs
+      - Comments
+    - [[YAML]] components
+      - Scalars
+      - Sequences
+      - Mappings
+- Chapter 2 - Deep Diving into [[GitHub Actions]]
+  - #wip
+- Chapter 3 - a closer look at workflows
+  - #wip
+- Chapter 4 - working with self-hosted runners
+  - #wip
+- Chapter 5 - writing your own actions
+  - #wip
+- Chapter 6 - marketplace: finding existing actions and publishing your owns
+  - #wip
+- Chapter 7 - migrations
+  - #wip
+- Chapter 8 - contributing to the community and finding help
+  - #wip
+- Chapter 9 - the future of [[GitHub Actions]]
+  - #wip
