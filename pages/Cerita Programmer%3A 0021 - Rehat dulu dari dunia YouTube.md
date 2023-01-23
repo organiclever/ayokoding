@@ -1,7 +1,7 @@
 type:: content
 content-origin:: internal
 content-series:: [[Cerita Programmer]]
-content-status:: [[WIP]]
+content-status:: wip
 content-channels:: [[YouTube]]
 lang:: id
 

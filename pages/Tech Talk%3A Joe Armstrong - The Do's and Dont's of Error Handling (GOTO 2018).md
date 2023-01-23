@@ -1,7 +1,7 @@
 content-channels:: [[YouTube]]
 content-origin:: external
-content-series:: [[Cerita Programmer]]
-content-status:: [[WIP]]
+content-status:: wip
+content-authors:: [[Joe Armstrong]]
 lang:: en
 type:: content
 
@@ -32,14 +32,14 @@ type:: content
     - How the computers are interconnected and the protocols used between the computers is the significant problem.
     - We want the same way to program large and small scale systems
   - Message passing is inevitable
-    - [[WIP]]
+    - #wip
   - What's the big deal about concurrency?
-    - [[WIP]]
+    - #WIP
   - Why concurrent?
-    - [[WIP]]
+    - #WIP
   - Detecting errors
-    - [[WIP]]
+    - #WIP
   - Is that all?
-    - [[WIP]]
+    - #WIP
   - How do we descript contracts?
-    - [[WIP]]
+    - #wip
