@@ -92,18 +92,146 @@ type:: content
       - Sequences
       - Mappings
 - Chapter 2 - Deep Diving into [[GitHub Actions]]
-  - #wip
+  - Learning about GitHub Actions' core concepts and components
+    - Events
+      - GitHub Actions are event-driven.
+      - Workflows can be triggered by 3 groups of events
+        - Scheduled events
+          - Trigger a workflow run at a specified time.
+          - They use [[POSIX cron syntax]]
+          - Scheduled events run on the latest commit on the default branch.
+          - Example:
+            - Trigger every 5 minutes (the shortest interval we can schedule intervals for)
+              - ```yaml
+                on:
+                  schedule:
+                    - cron: '*/5 * * * *'
+                ```
+        - Manual events
+          - 2 types of manual events
+            - `workflow_dispatch`
+              - Used to trigger specific workflows within the repository on GitHub manually.
+              - It also allows us to define custom input properties, as well as default and required inputs.
+              - To trigger the `workflow_dispatch` event, the workflow must be on the default branch.
+              - Example
+                - ```yaml
+                  on:
+                    workflow_dispatch:
+                      inputs:
+                        username:
+                          description: 'Your GitHub username'
+                          required: true
+                        reason:
+                          description: 'Why are you running this workflow manually?'
+                          required: true
+                          default: 'I am running tests before implementing an automated workflow'
+                  ```
+            - `repository_dispatch`
+              - The workflow can happen in different repositories or in environment outside GitHub.
+              - To trigger this event, we must use the GitHub API and send a POST request that provides an `event_type` name that we will describe the activity type.
+                - Example
+                  - ```sh
+                    curl -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/octocat/hello-world/dispatches -d '{"event_type":"event_type"}'
+                    ```
+              - We will need to use the [[Personal Access Token (PAT)]].
+        - Webhook events
+          - Trigger a workflow when GitHub webhook events - such as issue and pull request creation, update, and deletion, deployment, page_build, and others - are created.
+      - Jobs
+        - A set of steps that run on the same runner.
+        - Multiple jobs within the same workflow can run sequentially, although by default, they will run in parallel.
+        - Example
+          - ```yaml
+            jobs:
+              tests_manual_workflow:
+                runs-on: ubuntu-latest
+            ```
+      - Steps
+        - Individual tasks that can run commands.
+        - Steps can share data among themselves because is step in a given job runs on the same runner.
+        - Example
+          - ```yaml
+            steps:
+              - run: >
+                  echo "User ${{ github.event.inputs.username }} ran a workflow manually."
+                  echo "Because ${{ github.event.inputs.reason }}."
+            ```
+      - Actions
+        - Standalone commands that can be portable.
+        - Combined into steps to create a job.
+        - Example
+          - ```yaml
+            jobs:
+              stale:
+                runs-on: ubuntu-latest
+                steps:
+                  - uses: actions/stale@v3
+            ```
+      - Runners
+        - A runner is a server application, often installed on a virtual machine or Docker container, that runs a job from a GitHub Actions workflow.
+        - In general, a runner runs one job at a time and reports its progress to GitHub.
+        - While each job in a workflow executes on a fresh instance of the virtual machine, all the steps in a job execute in the same instance of the virtual machine. This allows the actions within that job to share information using the filesystem.
+        - Two types of runners
+          - GitHub-hosted runners
+            - Available: Windows, Mac, Ubuntu
+            - GitHub provides specific, case-sensitive environment variables that we should use to access the file system, rather than using hardcoded paths.
+              - home
+                - `HOME`
+              - workspace
+                - `GITHUB_WORKSPACE`
+              - workflow
+                - `GITHUB_EVENT_PATH`
+            - Each VM, independently of the OS, has the same hardware resources: a 2-core CPU, 7 GB of RAM, 14 GB of SSD disk space.
+          - Self-hosted runners
+  - Understanding the basics of workflows
+    - Workflow configuration is defined in a workflow file, which must be written using YAML.
+    - All workflow files related to GitHub Actions must live in the `.github/workflows` directory and must have either the `.yml` or `.yaml` file extension.
+    - Learning the basics of the workflow file syntax
+      - `name`
+        - Optional
+      - `on`
+        - Required
+        - Which event or events will trigger the workflow.
+      - `jobs`
+        - Workflow runs can have one or more jobs.
+        - Example
+          - ```yaml
+            jobs:
+              jobA:
+              jobB:
+                needs: jobA
+              jobC:
+                needs: [jobA, jobB]
+            ```
+        - `job_id`
+          - Each job must have a `job_id` associated with it.
+          - Must be strings that contain only alphanumeric characters.
+          - Must start with either an `_` or letter and must be unique to that specific job.
+        - `needs`
+          - Optional
+          - Requirements before running job
+        - `runs_on`
+          - Required
+          - Example
+            - ```yaml
+              runs-on:
+              	self-hosted
+              ```
+        - `steps`
+          - Tasks that exist within a job.
+          - Example
+            - ```yaml
+              steps:
+                - run: >
+                    echo "User ${{ github.event.inputs.username }} ran a workflow manually."
+                    echo "Because ${{ github.event.inputs.reason }}."
+              ```
+        - `uses`
+          - Use an existing action.
+  - Securing your GitHub Actions
 - Chapter 3 - a closer look at workflows
-  - #wip
 - Chapter 4 - working with self-hosted runners
-  - #wip
 - Chapter 5 - writing your own actions
-  - #wip
 - Chapter 6 - marketplace: finding existing actions and publishing your owns
-  - #wip
 - Chapter 7 - migrations
-  - #wip
 - Chapter 8 - contributing to the community and finding help
-  - #wip
 - Chapter 9 - the future of [[GitHub Actions]]
-  - #wip
