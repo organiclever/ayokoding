@@ -946,43 +946,46 @@ type:: content
       (apply vector (apply list v))
       ;; => ["The number " 2 " best selling " "book."]
 
-      (defn my-inc-1 [n] (+ 1 n))
-      (def my-inc (partial + 1))
-      (my-inc-1 2)
-      ;; => 3
+      (defn my-inc [n] (+ 1 n))
+      (def my-inc-p (partial + 1))
       (my-inc 2)
+      ;; => 3
+      (my-inc-p 2)
       ;; => 3
 
 
       (defn cheaper-than [max-price book]
         (when (<= (:price book) max-price)
           book))
-      (def real-cheap-1? (partial cheaper-than 1.00))
-      (def kind-of-cheap-1? (partial cheaper-than 1.99))
-      (def marginally-cheap-1? (partial cheaper-than 5.99))
-      (real-cheap-1? dracula)
+      (def real-cheap-p? (partial cheaper-than 1.00))
+      (def kind-of-cheap-p? (partial cheaper-than 1.99))
+      (def marginally-cheap-p? (partial cheaper-than 5.99))
+      (real-cheap-p? dracula)
       ;; => nil
-      (kind-of-cheap-1? dracula)
+      (kind-of-cheap-p? dracula)
       ;; => {:title "Dracula", :author "Stoker", :price 1.99, :genre :horror}
-      (marginally-cheap-1? dracula)
+      (marginally-cheap-p? dracula)
       ;; => {:title "Dracula", :author "Stoker", :price 1.99, :genre :horror}
 
-      (defn adventure? [book]
+      (defn adventure-p? [book]
         (when (= (:genre book) :adventure)
           book))
-      (defn not-adventure-1? [book] (not (adventure? book)))
-      (def not-adventure? (complement adventure?))
-      (not-adventure-1? dracula)
-      ;; => true
+      (defn not-adventure? [book] (not (adventure-p? book)))
+      (def not-adventure-c? (complement adventure-p?))
       (not-adventure? dracula)
+      ;; => true
+      (not-adventure-c? dracula)
       ;; => true
 
       ;; (def cheap-horror-2? (every-pred cheap? horror?))
-      (def cheap-horror-possession?
+      (def cheap-horror-possession-e?
         (every-pred
          cheap?
          horror?
          (fn [book] (= (:title book) "Possession"))))
+      (cheap-horror-possession-e? dracula)
+      ;; => false
+
       ```
 - Chapter 7 - Let
 - Chapter 8 - Def, Symbols, Vars
