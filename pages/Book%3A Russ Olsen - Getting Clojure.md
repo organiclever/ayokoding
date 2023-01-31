@@ -986,6 +986,39 @@ type:: content
       (cheap-horror-possession-e? dracula)
       ;; => false
 
+
+      ;; Function literals
+
+      (#(when (= (:genre %1) :horror) %1) dracula)
+      ;; => {:title "Dracula", :author "Stoker", :price 1.99, :genre :horror}
+      (#(+ %1 %2 %3) 1 2 3)
+      ;; => 6
+      (#(count %) "Count this string length")
+      ;; => 24
+
+
+      ;; In the wild
+
+      (defn say-welcome [what]
+        (str "Welcome to " what "!"))
+      (def say-welcome-with-def
+        (fn [what] (str "Welcome to " what "!")))
+      (say-welcome "home")
+      ;; => "Welcome to home!"
+      (say-welcome-with-def "home")
+      ;; => "Welcome to home!"
+
+      (def book {:title "Emma" :copies 1000})
+      book
+      ;; => {:title "Emma", :copies 1000}
+      (update book :copies inc)
+      ;; => {:title "Emma", :copies 1001}
+
+      (def by-author
+        {:name "Jane Austen"
+         :book {:title "Emma" :copies 1000}})
+      (update-in by-author [:book :copies] inc)
+      ;; => {:name "Jane Austen", :book {:title "Emma", :copies 1001}}
       ```
 - Chapter 7 - Let
 - Chapter 8 - Def, Symbols, Vars
