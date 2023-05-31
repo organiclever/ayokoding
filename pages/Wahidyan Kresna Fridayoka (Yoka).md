@@ -1,3 +1,0 @@
-- Nama lengkap: Wahidyan Kresna Fridayoka
-- Nama panggilan: Yoka
-- Pengalaman kerja: [[Hijra]], [[GudangAda]], [[Ruangguru]]
