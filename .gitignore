@@ -6,3 +6,5 @@ node_modules
 logseq/.recycle/**
 logseq/bak/**
 .clj-kondo
+.cpcache
+.lsp
