@@ -1,0 +1,9 @@
+{:deps
+ {time-lib/time-lib {:local/root "../../libs/time-lib"}}
+
+ :aliases
+ {:test {:extra-path ["test"]}
+  :nREPL {:extra-deps
+          {nrepl/nrepl {:mvn/version "1.0.0"}
+           cider/piggieback {:mvn/version "0.4.2"}
+           cider/cider-nrepl {:mvn/version,"0.28.5"}}}}}
