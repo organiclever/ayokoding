@@ -8,3 +8,4 @@ logseq/bak/**
 .clj-kondo
 .cpcache
 .lsp
+.calva
