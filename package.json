@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install && clj -Ttools install io.github.weavejester/cljfmt '{:git/tag \"0.10.4\"}' :as cljfmt",
-    "lint:clj": "clj-kondo --lint **/**/*.{clj,edn} --config .clj-kondo/config.edn",
+    "lint:clj": "clj-kondo --lint **/*.{clj,edn} --config .clj-kondo/config.edn",
     "lint": "npm run lint:clj",
     "hooks:pre-push": "npm run lint"
   },
