@@ -2,7 +2,7 @@
  {:clj-kondo.core/missing-ns
   {:severity :error}
   :unresolved-symbol {:exclude #{clojure.core/nil?}}}
- :paths ["src" "apps" "libs" ".clj-kondo"]
+ :paths ["src" "apps" "libs"]
  :output {}
  :analysis {:jvm true
             :namespaces [:require :use :import]
