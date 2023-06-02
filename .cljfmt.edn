@@ -1,0 +1,9 @@
+{:indentation :spaces
+ :indent-size 2
+ :remove-surrounding-whitespace? true
+ :remove-consecutive-blank-lines? true
+ :align-associative? true
+ :sort-require? true
+ :before-save? :check-forms
+ :parallel? true
+ :paths ["apps" "libs"]}
