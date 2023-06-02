@@ -5,10 +5,6 @@
   "scripts": {
     "prepare": "husky install && clj -Ttools install io.github.weavejester/cljfmt '{:git/tag \"0.10.4\"}' :as cljfmt"
   },
-  "lint-staged": {
-    "*.{js,ts,tsx,jsx,css,md,json,yml,yaml}": "npx prettier --write",
-    "*.{clj,cljs}": "echo clj file will directly use pre-commit hooks"
-  },
   "devDependencies": {
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
