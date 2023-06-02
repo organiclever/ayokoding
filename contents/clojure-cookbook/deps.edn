@@ -1,1 +1,5 @@
-{}
+{:aliases
+ {:my-fn
+  {:exec-fn hello-world/run
+   :exec-args {:my {:data 123}
+               :config 456}}}}
