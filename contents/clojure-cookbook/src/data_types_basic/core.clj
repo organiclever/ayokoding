@@ -29,3 +29,5 @@ false
 :my-keyword
 ;; => :my-keyword
 
+nil
+;; => nil
