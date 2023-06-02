@@ -6,4 +6,4 @@
 
 (def ab 123)
 
-(println a)
+(println ab)
