@@ -5,3 +5,5 @@
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 
 (def ab 123)
+
+(println a)
