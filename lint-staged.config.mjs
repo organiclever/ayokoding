@@ -1,9 +1,9 @@
 export default {
   '*.{js,jsx,ts,tsx,mjs}': ['npx prettier --write'],
-  '*,{clj,cljc,cljs,edn}': (files) => {
+  '*.{clj,cljc,cljs,edn}': (files) => {
     console.log('yo');
     console.log(files);
-    return `clj -Tcljfmt fix '{:paths [${files.join(', ')}]}'
+    return `clj -Tcljfmt fix '{:paths ["${files.join('", "')}"]}'
     `;
   },
 };
