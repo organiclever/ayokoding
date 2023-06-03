@@ -52,6 +52,10 @@
 (last '(1 2 3 4 5))
 ;; => 5
 (last '(1))
+;; => 1
+
+;; =>
+(last '())
 ;; => nil
 
 ;; ---
@@ -178,7 +182,7 @@ list-a
 (into {} '([:a 2] [:b 4] [:c 6]))
 ;; => {:a 2, :b 4, :c 6}
 (into {} '((:a 2) (:b 4) (:c 6)))
-;; => Execution error (ClassCastException) at collections-list.core/eval14028 (REPL:180).
+;; => Execution error (ClassCastException) at collections-list.core/eval14457 (REPL:185).
 ;;    class clojure.lang.Keyword cannot be cast to class java.util.Map$Entry (clojure.lang.Keyword is in unnamed module of loader 'app'; java.util.Map$Entry is in module java.base of loader 'bootstrap')
 
 (seq '(1 2 3 4 5))
