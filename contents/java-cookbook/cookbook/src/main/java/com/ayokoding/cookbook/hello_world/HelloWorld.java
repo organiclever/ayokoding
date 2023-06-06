@@ -1,4 +1,4 @@
-package com.ayokoding.cookbook;
+package com.ayokoding.cookbook.hello_world;
 
 public class HelloWorld {
   public static void main(String[] args) {
