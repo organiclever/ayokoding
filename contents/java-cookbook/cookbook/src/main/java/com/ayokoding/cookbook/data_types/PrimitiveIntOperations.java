@@ -70,19 +70,19 @@ public class PrimitiveIntOperations {
     System.out.println(a); // 1000
 
     a %= 200;
-    System.out.println(a); // 200
+    System.out.println(a); // 0
 
     a = 1000;
     a &= 200;
-    System.out.println(a); // 192
+    System.out.println(a); // 200
 
     a = 1000;
     a |= 200;
-    System.out.println(a); // 1208
+    System.out.println(a); // 1000
 
     a = 1000;
     a ^= 200;
-    System.out.println(a); // 816
+    System.out.println(a); // 800
 
     a = 1000;
     a <<= 2;
