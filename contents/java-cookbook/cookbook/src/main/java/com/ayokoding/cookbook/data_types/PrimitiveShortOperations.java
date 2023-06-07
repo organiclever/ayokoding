@@ -1,6 +1,6 @@
 package com.ayokoding.cookbook.data_types;
 
-public class ShortOperations {
+public class PrimitiveShortOperations {
   public static void main(String[] args) {
 
     // Arithmetic Operations

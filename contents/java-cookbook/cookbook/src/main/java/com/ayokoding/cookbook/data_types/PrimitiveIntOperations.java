@@ -1,6 +1,6 @@
 package com.ayokoding.cookbook.data_types;
 
-public class IntOperations {
+public class PrimitiveIntOperations {
   public static void main(String[] args) {
 
     // Arithmetic Operations
