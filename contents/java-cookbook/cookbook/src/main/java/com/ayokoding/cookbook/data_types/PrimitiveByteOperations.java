@@ -1,6 +1,6 @@
 package com.ayokoding.cookbook.data_types;
 
-public class ByteOperations {
+public class PrimitiveByteOperations {
   public static void main(String[] args) {
     // Arithmetic Operations
     byte a = 10;
