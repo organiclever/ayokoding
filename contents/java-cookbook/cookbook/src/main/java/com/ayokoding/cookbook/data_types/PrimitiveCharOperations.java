@@ -63,13 +63,13 @@ public class PrimitiveCharOperations {
     System.out.println(a); // A
 
     a *= 2;
-    System.out.println(a); // Ä
+    System.out.println(a); // blank => ?
 
     a /= 2;
     System.out.println(a); // A
 
     a %= 2;
-    System.out.println(a); // A
+    System.out.println(a); // blank => ?
 
     a = 'A';
     a &= 'B';
@@ -81,11 +81,11 @@ public class PrimitiveCharOperations {
 
     a = 'A';
     a ^= 'B';
-    System.out.println(a); // C ?
+    System.out.println(a); // blank => ?
 
     a = 'A';
     a <<= 2;
-    System.out.println(a); // Ä
+    System.out.println(a); // Ą
 
     a = 'Ä';
     a >>= 2;
