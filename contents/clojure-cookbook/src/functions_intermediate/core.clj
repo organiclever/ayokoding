@@ -65,7 +65,7 @@
 (curried-add 3)
 ;; => 8
 
-;; Function with multiple arity
+;; Function with multiple arities
 
 (defn greeting
   ([] "Hello!")
