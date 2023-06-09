@@ -12,6 +12,21 @@
 (#(* % 2) 5)
 ;; => 10
 
+;; Recursion
+(defn factorial [n]
+  (if (<= n 1)
+    1
+    (* n (factorial (dec n)))))
+(factorial 5)
+;; => 120
+
+(defn fibonacci [n]
+  (if (<= n 2)
+    1
+    (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+(fibonacci 10)
+;; => 55
+
 ;; Higher-order function
 (defn apply-twice [f x]
   (f (f x)))
@@ -39,26 +54,16 @@
 ((partial * 3) 4)
 ;; => 12
 
+;; juxt
+(def combined-function (juxt add-one triple cubic))
+(combined-function 5)
+;; => [6 15 125]
+
 (defn add [x y]
   (+ x y))
 (def curried-add (partial add 5))
 (curried-add 3)
 ;; => 8
-
-;; Recursion
-(defn factorial [n]
-  (if (<= n 1)
-    1
-    (* n (factorial (dec n)))))
-(factorial 5)
-;; => 120
-
-(defn fibonacci [n]
-  (if (<= n 2)
-    1
-    (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
-(fibonacci 10)
-;; => 55
 
 ;; Function with multiple arity
 
