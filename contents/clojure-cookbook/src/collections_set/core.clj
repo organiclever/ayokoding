@@ -1,4 +1,4 @@
-(ns collections-sets.core
+(ns collections-set.core
   (:require [clojure.set :as set]))
 
 ;; ---

@@ -1,4 +1,4 @@
-(ns collections-vectors.core)
+(ns collections-vector.core)
 
 ;; ---
 ;; Vector creation
