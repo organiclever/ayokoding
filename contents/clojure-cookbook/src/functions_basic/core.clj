@@ -15,6 +15,11 @@
 (add 1 2)
 ;; => 3
 
+(def add-2 (fn [x y]
+             (+ x y)))
+(add-2 1 2)
+;; => 3
+
 (defn print-hello [who]
   (println (get-hello who)))
 (print-hello "world")
