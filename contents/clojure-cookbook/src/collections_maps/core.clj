@@ -8,6 +8,11 @@
 ;; => {:a 1, :b 2, :c 3, :d 4, :e 5}
 {:a 1, :b "b", :c 3, :d "d"}
 ;; => {:a 1, :b "b", :c 3, :d "d"}
+{:a 1, "b" "c", 2 "b", :d "d"}
+;; => {:a 1, "b" "c", 2 "b", :d "d"}
+
+(class {:a 1 :b 2 :c 3 :d 4 :e 5})
+;; => clojure.lang.PersistentArrayMap
 
 (hash-map :a 1 :b 2 :c 3 :d 4 :e 5)
 ;; => {:e 5, :c 3, :b 2, :d 4, :a 1}

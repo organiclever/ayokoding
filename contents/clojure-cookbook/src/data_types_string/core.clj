@@ -8,6 +8,9 @@
 "abcdef123456"
 ;; => "abcdef123456"
 
+(class "abcdef123456")
+;; => java.lang.String
+
 (string? "abc")
 ;; => true
 
