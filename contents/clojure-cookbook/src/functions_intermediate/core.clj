@@ -6,6 +6,7 @@
 ;; ---
 
 ;; Anonymous function
+
 ((fn [x] (* x 2)) 5)
 ;; => 10
 
@@ -13,6 +14,7 @@
 ;; => 10
 
 ;; Recursion
+
 (defn factorial [n]
   (if (<= n 1)
     1
@@ -28,6 +30,7 @@
 ;; => 55
 
 ;; Higher-order function
+
 (defn apply-twice [f x]
   (f (f x)))
 (defn square [x]
@@ -37,6 +40,7 @@
 ;; => 16
 
 ;; Function composition
+
 (defn add-one [x]
   (+ x 1))
 (defn triple [x]
@@ -51,11 +55,13 @@
 ;; => 82
 
 ;; juxt
+
 (def combined-function (juxt add-one triple cubic))
 (combined-function 5)
 ;; => [6 15 125]
 
 ;; Partial application and currying
+
 ((partial * 3) 4)
 ;; => 12
 
