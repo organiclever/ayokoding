@@ -71,3 +71,5 @@
 ;; => true
 (str/blank? nil)
 ;; => true
+(str/blank? "abcdef123456")
+;; => false
