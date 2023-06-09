@@ -60,6 +60,20 @@
 (fibonacci 10)
 ;; => 55
 
+;; Function with multiple arity
+
+(defn greeting
+  ([] "Hello!")
+  ([name] (str "Hello, " name "!"))
+  ([name salutation] (str salutation ", " name "!")))
+
+(greeting)
+;; => "Hello!"
+(greeting "John")
+;; => "Hello, John!"
+(greeting "John" "Hi")
+;; => "Hi, John!"
+
 ;; ---
 ;; More on recursion and tail recursion
 ;; ---
