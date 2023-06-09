@@ -64,10 +64,6 @@
 ;; => #{4 3 5}
 (set/difference #{1 4 3 2 5} #{3 4 5})
 ;; => #{1 2}
-(set/superset? #{1 4 3 2 5} #{3 4 5})
-;; => true
-(set/subset? #{3 4 5} #{1 4 3 2 5})
-;; => true
 
 ;; ---
 ;; Predicates
@@ -78,15 +74,15 @@
 (empty? #{1 2})
 ;; => false
 
-(seq #{})
-;; => nil
-(seq #{1 2 3 4 5})
-;; => (1 4 3 2 5)
-
 (contains? #{1 2 3 4 5} 3)
 ;; => true
 (contains? #{1 2 3 4 5} 6)
 ;; => false
+
+(set/superset? #{1 4 3 2 5} #{3 4 5})
+;; => true
+(set/subset? #{3 4 5} #{1 4 3 2 5})
+;; => true
 
 ;; ---
 ;; Utility functions
