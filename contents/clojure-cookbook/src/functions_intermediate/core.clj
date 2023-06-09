@@ -10,8 +10,10 @@
 ;; => 16
 
 ;; Anonymous function
-(fn [x] (* x 2))
 ((fn [x] (* x 2)) 5)
+;; => 10
+
+(#(* % 2) 5)
 ;; => 10
 
 ;; Recursive function
@@ -29,10 +31,14 @@
   (* x 3))
 (defn cubic [x]
   (* x x x))
+((comp add-one) 3)
+;; => 4
+((comp add-one triple) 3)
+;; => 10
 ((comp add-one triple cubic) 3)
 ;; => 82
 
-;; Partial application using the `partial` function
+;; Partial application and currying
 ((partial * 3) 4)
 ;; => 12
 
