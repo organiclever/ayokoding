@@ -50,14 +50,14 @@
 ((comp add-one triple cubic) 3)
 ;; => 82
 
-;; Partial application and currying
-((partial * 3) 4)
-;; => 12
-
 ;; juxt
 (def combined-function (juxt add-one triple cubic))
 (combined-function 5)
 ;; => [6 15 125]
+
+;; Partial application and currying
+((partial * 3) 4)
+;; => 12
 
 (defn add [x y]
   (+ x y))
