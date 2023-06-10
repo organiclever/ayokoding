@@ -71,7 +71,9 @@
 (curried-add 3)
 ;; => 8
 
-;; Function with multiple arities
+;; ---
+;; Multiple arities and variadic functions
+;; ---
 
 (defn greeting
   ([] "Hello!")
@@ -94,6 +96,11 @@
 ;; => "Hello, John!"
 (greeting-v2 "John" "Hi")
 ;; => "Hi, John!"
+
+(defn sum [& nums]
+  (apply + nums))
+(sum 1 2 3 4)
+;; => 10
 
 ;; ---
 ;; More on recursion and tail recursion
