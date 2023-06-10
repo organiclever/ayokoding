@@ -142,6 +142,8 @@
 ;; Other utilities
 ;; ---
 
+;; Documentation
+
 (doc partial)
 ;; => print:
 ;; (doc partial)
@@ -163,3 +165,14 @@
 ;; functions-intermediate.core/triple-2
 ;; ([x])
 ;; Calculates the tripe of a number.
+
+;; Metadata
+
+(defn ^{:author "John Doe" :date "2023-06-11"} my-function [x]
+  (println "Executing my-function with argument" x))
+
+(:author (meta #'my-function))
+;; => "John Doe"
+(:date (meta #'my-function))
+;; => "2023-06-11"
+
