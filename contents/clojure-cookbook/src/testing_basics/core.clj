@@ -43,6 +43,12 @@
   (is (thrown?  Exception
                 (throws-exception))))
 
+(run-tests 'testing-basics.core)
+;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
+
+(run-all-tests)
+;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
+
 ;; ---
 ;; Organizing the tests
 ;; ---
@@ -58,9 +64,3 @@
   (testing "Negative case"
     (is (thrown?  IllegalArgumentException
                   (divide 4 0)))))
-
-(run-tests 'testing-basics.core)
-;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
-
-(run-all-tests)
-;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
