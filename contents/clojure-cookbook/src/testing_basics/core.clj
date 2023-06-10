@@ -2,6 +2,10 @@
   (:require [clojure.test :refer [are deftest is run-all-tests run-tests
                                   testing]]))
 
+;; ---
+;; Testing functions
+;; ---
+
 ;; Basic functions
 
 (defn sum [a b]
@@ -39,7 +43,9 @@
   (is (thrown?  Exception
                 (throws-exception))))
 
+;; ---
 ;; Organizing the test
+;; ---
 
 (defn divide [a b]
   (if (zero? b)
