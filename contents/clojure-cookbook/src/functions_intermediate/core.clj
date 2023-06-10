@@ -175,4 +175,3 @@
 ;; => "John Doe"
 (:date (meta #'my-function))
 ;; => "2023-06-11"
-
