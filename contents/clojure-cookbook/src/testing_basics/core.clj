@@ -14,6 +14,11 @@
   (is (= 3 (sum 1 2)))
   (is (= 0 (sum 1 -1))))
 
+(deftest sum-test-with-setup
+  (let [a 1]
+    (is (= 3 (sum a 2)))
+    (is (= 0 (sum a -1)))))
+
 (defn subtract [a b]
   (- a b))
 (deftest subtract-test
@@ -44,10 +49,10 @@
                 (throws-exception))))
 
 (run-tests 'testing-basics.core)
-;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
+;; => {:test 6, :pass 13, :fail 0, :error 0, :type :summary}
 
 (run-all-tests)
-;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
+;; => {:test 6, :pass 13, :fail 0, :error 0, :type :summary}
 
 ;; ---
 ;; Organizing the tests
