@@ -1,5 +1,6 @@
 (ns testing-basics.core
-  (:require [clojure.test :refer [are deftest is run-tests testing]]))
+  (:require [clojure.test :refer [are deftest is run-all-tests run-tests
+                                  testing]]))
 
 ;; Basic functions
 
@@ -53,4 +54,7 @@
                   (divide 4 0)))))
 
 (run-tests 'testing-basics.core)
+;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
+
+(run-all-tests)
 ;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}

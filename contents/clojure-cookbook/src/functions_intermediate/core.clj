@@ -77,12 +77,22 @@
   ([] "Hello!")
   ([name] (str "Hello, " name "!"))
   ([name salutation] (str salutation ", " name "!")))
-
 (greeting)
 ;; => "Hello!"
 (greeting "John")
 ;; => "Hello, John!"
 (greeting "John" "Hi")
+;; => "Hi, John!"
+
+(defn greeting-v2
+  ([] (greeting-v2 "Hello" "World"))
+  ([name] (greeting-v2 "Hello" name))
+  ([name salutation] (str salutation ", " name "!")))
+(greeting-v2)
+;; => "Hello, World!"
+(greeting-v2 "John")
+;; => "Hello, John!"
+(greeting-v2 "John" "Hi")
 ;; => "Hi, John!"
 
 ;; ---
