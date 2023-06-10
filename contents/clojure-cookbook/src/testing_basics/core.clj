@@ -1,5 +1,5 @@
 (ns testing-basics.core
-  (:require [clojure.test :refer [are deftest is run-tests]]))
+  (:require [clojure.test :refer [are deftest is run-tests testing]]))
 
 ;; Basic functions
 
@@ -38,14 +38,19 @@
   (is (thrown?  Exception
                 (throws-exception))))
 
+;; Organizing the test
+
 (defn divide [a b]
   (if (zero? b)
-    (throw (IllegalArgumentException "Cannot divide by zero"))
+    (throw (IllegalArgumentException. "Cannot divide by zero"))
     (/ a b)))
 (deftest divide-test
-  (is (= 2 (divide 4 2)))
-  (is (thrown?  IllegalArgumentException
-                (divide 4 0))))
+  (testing "Positive case"
+    (is (= 2 (divide 4 2)))
+    (is (= 1/2 (divide 1 2))))
+  (testing "Negative case"
+    (is (thrown?  IllegalArgumentException
+                  (divide 4 0)))))
 
 (run-tests 'testing-basics.core)
-;; => {:test 4, :pass 8, :fail 0, :error 0, :type :summary}
+;; => {:test 5, :pass 10, :fail 0, :error 0, :type :summary}
