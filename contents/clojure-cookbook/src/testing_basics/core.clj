@@ -53,4 +53,4 @@
                   (divide 4 0)))))
 
 (run-tests 'testing-basics.core)
-;; => {:test 5, :pass 10, :fail 0, :error 0, :type :summary}
+;; => {:test 5, :pass 11, :fail 0, :error 0, :type :summary}
