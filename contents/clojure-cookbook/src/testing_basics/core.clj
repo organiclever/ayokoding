@@ -44,7 +44,7 @@
                 (throws-exception))))
 
 ;; ---
-;; Organizing the test
+;; Organizing the tests
 ;; ---
 
 (defn divide [a b]
