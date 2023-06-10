@@ -20,11 +20,11 @@
 ;; Function with multiple arities
 
 (defn greeting
-  ([] "Hello!")
-  ([name] (str "Hello, " name "!"))
+  ([] (greeting "World" "Hello"))
+  ([name] (greeting name "Hello"))
   ([name salutation] (str salutation ", " name "!")))
 (deftest greeting-test
-  (is (= "Hello!"
+  (is (= "Hello, World!"
          (greeting)))
   (is (= "Hello, John!"
          (greeting "John")))
