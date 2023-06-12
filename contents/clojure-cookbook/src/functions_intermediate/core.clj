@@ -155,9 +155,9 @@
 ;; called, the returned function calls f with args + additional args.
 
 (defn triple-2
-  "Calculates the tripe of a number."
+  "Calculates the triple of a number."
   [x]
-  (* x x))
+  (* x 3))
 
 (doc triple-2)
 ;; => print:

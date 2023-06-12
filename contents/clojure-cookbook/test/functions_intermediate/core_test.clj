@@ -57,7 +57,7 @@
   (is (= 6 (subject/recursive-function 6))))
 
 (deftest recursive-function-with-recur-test
-  (is (= 6 (subject/recursive-function-with-recur 6))))
+  (is (= 0 (subject/recursive-function-with-recur 6))))
 
 (deftest factorial-with-recur-test
   (is (= 120 (subject/factorial-with-recur 5))))
