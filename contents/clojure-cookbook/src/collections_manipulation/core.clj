@@ -1,6 +1,6 @@
 (ns collections-manipulation.core)
 
-;; map
+;; Map
 
 (map (fn [x] (+ x 1)) '(1 2 3 4 5))
 ;; => (2 3 4 5 6)
@@ -11,7 +11,7 @@
 (map (fn [x] (val x)) {:a 1 :b 2 :c 3 :d 4 :e 5})
 ;; => (1 2 3 4 5)
 
-;; filter
+;; Filter
 
 (filter (fn [x] (even? x)) '(1 2 3 4 5))
 ;; => (2 4)
@@ -22,7 +22,7 @@
 (filter (fn [x] (even? (val x))) {:a 1 :b 2 :c 3})
 ;; => ([:b 2])
 
-;; reduce
+;; Reduce
 
 (reduce (fn [acc x] (str acc x)) "" ["a" "b" "c"])
 ;; => "abc"
@@ -33,7 +33,7 @@
 (reduce (fn [x y] (str x (val y))) "" {:a "a" :b "b" :c "c"})
 ;; => "abc"
 
-;; side effects
+;; Side effects
 
 (run! println [1 2 3 4 5])
 ;; => nil
@@ -57,7 +57,7 @@
   (println (val x)))
 ;; => nil
 
-;; immutability
+;; Immutability
 
 (def a-vector [1 2 3 4 5])
 (def a-list '(1 2 3 4 5))
