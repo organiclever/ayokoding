@@ -1,4 +1,4 @@
-(ns collections-working-with.core)
+(ns collections-manipulation.core)
 
 ;; map
 
@@ -56,3 +56,37 @@
 (doseq [x {:a 1 :b 2 :c 3 :d 4 :e 5}]
   (println (val x)))
 ;; => nil
+
+;; immutability
+
+(def a-vector [1 2 3 4 5])
+(def a-list '(1 2 3 4 5))
+(def a-set #{1 2 3 4 5})
+(def a-map {:a 1 :b 2 :c 3 :d 4 :e 5})
+
+(map inc a-vector)
+;; => (2 3 4 5 6)
+a-vector
+;; => [1 2 3 4 5]
+
+(filter even? a-list)
+;; => (2 4)
+a-list
+;; => (1 2 3 4 5)
+
+a-set
+;; => #{1 4 3 2 5}
+(reduce str "" a-set)
+;; => "14325"
+a-set
+;; => #{1 4 3 2 5}
+
+(run! #(println (val %)) a-map)
+;; => nil
+a-map
+;; => {:a 1, :b 2, :c 3, :d 4, :e 5}
+(doseq [x a-map]
+  (println (val x)))
+;; => nil
+a-map
+;; => {:a 1, :b 2, :c 3, :d 4, :e 5}
