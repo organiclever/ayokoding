@@ -76,11 +76,11 @@
 ;; ---
 
 (defn greeting
-  ([] "Hello!")
+  ([] "Hello, World!")
   ([name] (str "Hello, " name "!"))
   ([name salutation] (str salutation ", " name "!")))
 (greeting)
-;; => "Hello!"
+;; => "Hello, World!"
 (greeting "John")
 ;; => "Hello, John!"
 (greeting "John" "Hi")
@@ -169,7 +169,7 @@
 ;; Metadata
 
 (defn ^{:author "John Doe" :date "2023-06-11"} my-function [x]
-  (println "Executing my-function with argument" x))
+  (str "Executing my-function with argument: " x))
 
 (:author (meta #'my-function))
 ;; => "John Doe"
