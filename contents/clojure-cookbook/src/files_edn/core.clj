@@ -8,7 +8,7 @@
   (with-open [reader (io/reader file-path)]
     (edn/read-string (slurp reader))))
 
-(def edn_simple_sample_data (read-edn-file "data_set/read_simple_example.edn"))
+(def edn_simple_sample_data (read-edn-file "data_set/simple_example_read.edn"))
 
 edn_simple_sample_data
 ;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :address {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}, :interests ["programming" "reading" "hiking"]}
@@ -46,7 +46,7 @@ edn_simple_sample_meta_data
     (binding [*out* writer]
       (prn data))))
 
-(write-edn-file "data_set/write_simple_example.edn" edn_simple_sample_data)
+(write-edn-file "data_set/simple_example_write.edn" edn_simple_sample_data)
 
 ;; Read Custom EDN Files
 
@@ -58,7 +58,7 @@ edn_simple_sample_meta_data
   (with-open [reader (io/reader file-path)]
     (edn/read-string {:readers {'myapp/wishes wishes-reader}} (slurp reader))))
 
-(def edn_custom_sample_data (read-custom-edn-file "data_set/read_custom_example.edn"))
+(def edn_custom_sample_data (read-custom-edn-file "data_set/custom_example_read.edn"))
 
 edn_custom_sample_data
 ;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :address {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}, :interests ["programming" "reading" "hiking"], :wishes ["Learn 100 languages >>|<< Learn 100 languages" "Teleport to office >>|<< Teleport to office"]}
