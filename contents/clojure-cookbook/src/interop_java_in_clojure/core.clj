@@ -105,7 +105,7 @@ dim
 ;; Local Java file
 ;; ---
 
-;; Assume that Calculator.class is in the same folder
+;; Assume that Calculator.class is in the correct folder/package
 ;; and has a superAdd method that adds two numbers
 ;; See the repository
 
