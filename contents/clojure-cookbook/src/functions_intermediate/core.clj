@@ -185,6 +185,7 @@
     (string/replace " " "-"))
 ;; => "clojure"
 (clojure.string/replace (clojure.string/trim (clojure.string/lower-case "   clojure  ")) " " "-")
+;; => "clojure"
 
 (->> [1 2 3 4 5]
      (map #(* % 2))
