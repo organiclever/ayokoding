@@ -7,8 +7,10 @@
            java.time.ZoneOffset))
 
 ;; ---
-;; get current time and date
+;; Working with LocalTime, LocalDate, LocalDateTime
 ;; ---
+
+;; get current time and date
 
 (def now (LocalDateTime/now))
 (def today (LocalDate/now))
@@ -27,9 +29,7 @@ current-time
 (str current-time)
 ;; => "17:06:24.039461"
 
-;; ---
 ;; Playing with date and time format
-;; ---
 
 (-> now (.format (DateTimeFormatter/ofPattern "yyyy-MM-dd HH:mm:ss")))
 ;; => "2023-06-16 17:06:16"
@@ -61,9 +61,7 @@ formatted-date-time
 (str parsed-as-local-time)
 ;; => "17:06:16"
 
-;; ---
 ;; manipulating date and time
-;; ---
 
 (def tomorrow (-> today (.plusDays 1)))
 (def future-date-time (-> now (.plusHours 2) (.plusMinutes 30)))
@@ -97,9 +95,7 @@ formatted-date-time
 (str past-time)
 ;; => "14:36:24.039461"
 
-;; ---
 ;; Comparing two times
-;; ---
 
 (-> today (.compareTo tomorrow))
 ;; => -1
