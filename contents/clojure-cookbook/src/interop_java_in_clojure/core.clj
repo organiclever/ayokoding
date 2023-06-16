@@ -1,6 +1,7 @@
 (ns interop-java-in-clojure.core
   (:require
-   [clojure.reflect :as reflect]))
+   [clojure.reflect :as reflect])
+  (:import (interop_java_in_clojure Calculator)))
 
 ;; ---
 ;; Interop basics
@@ -105,4 +106,13 @@ dim
 ;; Local Java file
 ;; ---
 
-;; (import Calculator)
+;; Assume that Calculator.class is in the same folder
+;; and has a superAdd method that adds two numbers
+;; See the repository
+
+(def calculator (Calculator.))
+;; => #'interop-java-in-clojure.core/calculator
+(class calculator)
+;; => interop_java_in_clojure.Calculator
+(.superAdd calculator 1 2)
+;; => 3
