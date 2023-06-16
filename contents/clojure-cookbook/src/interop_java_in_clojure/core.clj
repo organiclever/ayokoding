@@ -69,7 +69,7 @@ dim
 ;; => "Hello World"
 
 ;; ---
-;; exception handling
+;; Java exception handling
 ;; ---
 
 (try (/ (int 42) (int 0))
