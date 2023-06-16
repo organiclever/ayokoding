@@ -3,6 +3,7 @@
            java.time.LocalDate
            java.time.LocalDateTime
            java.time.LocalTime
+           java.time.ZonedDateTime
            java.time.ZoneId
            java.time.ZoneOffset))
 
@@ -114,9 +115,65 @@ formatted-date-time
 ;; => 1
 
 ;; ---
-;; Working with timezone
+;; Working with timezone - get current-time
 ;; ---
 
-(def zone-id (java.time.ZoneId/of "America/Sao_Paulo"))
-(def zone-offset (java.time.ZoneOffset/ofHours -3))
-(def zone-offset-id (java.time.ZoneOffset/ofHoursMinutesSeconds -3 0 0))
+;; Get current time with timezone
+
+(def now-with-zone (ZonedDateTime/now))
+(class now-with-zone)
+;; => java.time.ZonedDateTime
+(str now-with-zone)
+;; => "2023-06-16T18:12:34.375243+07:00[Asia/Jakarta]"
+
+;; Get current time with timezone in a place
+
+(def now-in-berlin (-> now-with-zone (.withZoneSameInstant (ZoneId/of "Europe/Berlin"))))
+(class now-in-berlin)
+;; => java.time.ZonedDateTime
+(str now-in-berlin)
+;; => "2023-06-16T13:12:34.375243+02:00[Europe/Berlin]"
+
+(class (ZoneId/getAvailableZoneIds))
+;; => java.util.HashSet
+(count (ZoneId/getAvailableZoneIds))
+;; => 603
+(filter #(.contains % "Jakarta") (ZoneId/getAvailableZoneIds))
+;; => ("Asia/Jakarta")
+
+;; ---
+;; Working with timezone - manipulation
+;; ---
+
+;; Convert to GMT+ something
+
+(def now-in-zone-offset (-> now-with-zone (.withZoneSameInstant (ZoneOffset/ofHours 5))))
+(class now-in-zone-offset)
+;; => java.time.ZonedDateTime
+(str now-in-zone-offset)
+;; => "2023-06-16T16:12:34.375243+05:00"
+
+;; Convert to Local
+
+(class (LocalDateTime/from now-in-berlin))
+;; => java.time.LocalDateTime
+(str (LocalDateTime/from now-in-berlin))
+;; => "2023-06-16T13:12:34.375243"
+(class (LocalDate/from now-in-berlin))
+;; => java.time.LocalDate
+(str (LocalDate/from now-in-berlin))
+;; => "2023-06-16"
+(class (LocalTime/from now-in-berlin))
+;; => java.time.LocalTime
+(str (LocalTime/from now-in-berlin))
+;; => "13:12:34.375243"
+
+(.format (DateTimeFormatter/ofPattern "yyyy-MM-dd HH:mm:ss z") now-with-zone)
+;; => "2023-06-16 18:12:34 WIB"
+(.format DateTimeFormatter/ISO_LOCAL_DATE now-with-zone)
+;; => "2023-06-16"
+(.format DateTimeFormatter/ISO_LOCAL_TIME now-with-zone)
+;; => "18:12:34.375243"
+(try (.format (DateTimeFormatter/ofPattern "yyyy-MM-dd HH:mm:ss z") now)
+     (catch Exception e (.getMessage e)))
+;; => "Unable to extract ZoneId from temporal 2023-06-16T13:12:34.375243"
