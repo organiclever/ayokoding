@@ -1,5 +1,6 @@
 (ns functions-intermediate.core
-  (:require [clojure.repl :refer [doc]]))
+  (:require [clojure.repl :refer [doc]]
+            [clojure.string :as string]))
 
 ;; ---
 ;; Playing with Function
@@ -175,3 +176,20 @@
 ;; => "John Doe"
 (:date (meta #'my-function))
 ;; => "2023-06-11"
+
+;; Threading
+
+(-> "   clojure  "
+    (string/lower-case)
+    (string/trim)
+    (string/replace " " "-"))
+;; => "clojure"
+(clojure.string/replace (clojure.string/trim (clojure.string/lower-case "   clojure  ")) " " "-")
+
+(->> [1 2 3 4 5]
+     (map #(* % 2))
+     (filter odd?)
+     (reduce +))
+;; => 0
+(reduce + (filter odd? (map #(* % 2) [1 2 3 4 5])))
+;; => 0
