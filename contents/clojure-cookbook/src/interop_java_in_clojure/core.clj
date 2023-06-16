@@ -1,6 +1,6 @@
 (ns interop-java-in-clojure.core
-  (:require [clojure.pprint :as pprint]
-            [clojure.reflect :as reflect]))
+  (:require
+   [clojure.reflect :as reflect]))
 
 ;; ---
 ;; Interop basics
