@@ -61,7 +61,9 @@ formatted-date-time
 (str parsed-as-local-time)
 ;; => "17:06:16"
 
-;; manipulating date and time
+;; ---
+;; Date Time manipulation and comparison
+;; ---
 
 (def tomorrow (-> today (.plusDays 1)))
 (def future-date-time (-> now (.plusHours 2) (.plusMinutes 30)))
