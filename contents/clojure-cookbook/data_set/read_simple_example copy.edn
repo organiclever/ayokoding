@@ -1,0 +1,15 @@
+;; Example EDN file
+
+^{:author "John" :created-at "2022-01-01"}
+{:name "John Doe"
+ :age 30
+ :email "john.doe@example.com"
+ :address {:street "123 Main St"
+           :city "New York"
+           :state "NY"
+           :zip "10001"}
+ :interests ["programming" "reading" "hiking"]
+
+ :wishes
+ [#myapp/wishes "Learn 100 languages"
+  #myapp/wishes "Teleport to office"]}

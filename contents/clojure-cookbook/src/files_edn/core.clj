@@ -1,6 +1,7 @@
 (ns files-edn.core
   (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]))
+            [clojure.edn :as edn]
+            [clojure.tools.reader.edn :as edn-reader]))
 
 ;; Reading Simple EDN Files
 
@@ -47,3 +48,28 @@ edn_simple_sample_meta_data
       (prn data))))
 
 (write-edn-file "data_set/write_simple_example.edn" edn_simple_sample_data)
+
+;; Read Custom EDN Files
+
+(defn wishes-reader [data]
+  (println "Parsing myapp/wishes tag with data:" data)
+  (str data " >>|<< " data))
+
+(defn read-custom-edn-file [file-path]
+  (with-open [reader (io/reader file-path)]
+    (edn/read-string {:readers {'myapp/wishes wishes-reader}} (slurp reader))))
+
+(def edn_custom_sample_data (read-custom-edn-file "data_set/read_custom_example.edn"))
+
+edn_custom_sample_data
+;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :address {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}, :interests ["programming" "reading" "hiking"], :wishes ["Learn 100 languages >>|<< Learn 100 languages" "Teleport to office >>|<< Teleport to office"]}
+
+(:wishes edn_custom_sample_data)
+;; => ["Learn 100 languages >>|<< Learn 100 languages" "Teleport to office >>|<< Teleport to office"]
+
+(:age edn_custom_sample_data)
+;; => 30
+
+(:author (meta edn_custom_sample_data))
+;; => "John"
+

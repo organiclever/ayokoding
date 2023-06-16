@@ -8,4 +8,8 @@
            :city "New York"
            :state "NY"
            :zip "10001"}
- :interests ["programming" "reading" "hiking"]}
+ :interests ["programming" "reading" "hiking"]
+
+ :wishes
+ [#myapp/wishes "Learn 100 languages"
+  #myapp/wishes "Teleport to office"]}
