@@ -1,7 +1,6 @@
 (ns files-edn.core
   (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]
-            [clojure.tools.reader.edn :as edn-reader]))
+            [clojure.edn :as edn]))
 
 ;; Reading Simple EDN Files
 
@@ -72,4 +71,3 @@ edn_custom_sample_data
 
 (:author (meta edn_custom_sample_data))
 ;; => "John"
-
