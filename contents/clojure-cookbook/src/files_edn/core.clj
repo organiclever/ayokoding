@@ -2,7 +2,7 @@
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]))
 
-;; Reading EDN Files
+;; Reading Simple EDN Files
 
 (defn read-edn-file [file-path]
   (with-open [reader (io/reader file-path)]
@@ -39,7 +39,7 @@ edn_simple_sample_meta_data
 (:created-at edn_simple_sample_meta_data)
 ;; => "2022-01-01"
 
-;; Writing EDN Files
+;; Writing Simple EDN Files
 
 (defn write-edn-file [file-path data]
   (with-open [writer (io/writer file-path)]
