@@ -44,11 +44,7 @@ edn_simple_sample_meta_data
   (println "Parsing myapp/wishes tag with data:" data)
   (str data " >>|<< " data))
 
-(defn read-custom-edn-file [file-path]
-  (with-open [reader (io/reader file-path)]
-    (edn/read-string {:readers {'myapp/wishes wishes-reader}} (slurp reader))))
-
-(def edn_custom_sample_data (read-custom-edn-file "data_set/custom_example_read.edn"))
+(def edn_custom_sample_data (edn/read-string {:readers {'myapp/wishes wishes-reader}} (slurp "data_set/custom_example_read.edn")))
 
 edn_custom_sample_data
 ;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :address {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}, :interests ["programming" "reading" "hiking"], :wishes ["Learn 100 languages >>|<< Learn 100 languages" "Teleport to office >>|<< Teleport to office"]}
