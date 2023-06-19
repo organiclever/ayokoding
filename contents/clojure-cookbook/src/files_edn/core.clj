@@ -1,6 +1,6 @@
 (ns files-edn.core
-  (:require [clojure.java.io :as io]
-            [clojure.edn :as edn]))
+  (:require
+   [clojure.edn :as edn]))
 
 ;; Reading Simple EDN Files
 
