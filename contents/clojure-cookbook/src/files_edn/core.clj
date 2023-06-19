@@ -4,11 +4,7 @@
 
 ;; Reading Simple EDN Files
 
-(defn read-edn-file [file-path]
-  (with-open [reader (io/reader file-path)]
-    (edn/read-string (slurp reader))))
-
-(def edn_simple_sample_data (read-edn-file "data_set/simple_example_read.edn"))
+(def edn_simple_sample_data (edn/read-string (slurp "data_set/simple_example_read.edn")))
 
 edn_simple_sample_data
 ;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :address {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}, :interests ["programming" "reading" "hiking"]}
@@ -40,13 +36,7 @@ edn_simple_sample_meta_data
 ;; => "2022-01-01"
 
 ;; Writing Simple EDN Files
-
-(defn write-edn-file [file-path data]
-  (with-open [writer (io/writer file-path)]
-    (binding [*out* writer]
-      (prn data))))
-
-(write-edn-file "data_set/simple_example_write.edn" edn_simple_sample_data)
+(spit "data_set/simple_example_write.edn" edn_simple_sample_data)
 
 ;; Read Custom EDN Files
 
