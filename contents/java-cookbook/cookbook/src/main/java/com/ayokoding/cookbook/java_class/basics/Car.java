@@ -62,6 +62,7 @@ public class Car {
 
     // Accessing static variable and method
     Car.increaseCount();
-    System.out.println("Number of cars: " + Car.numberOfCars); // Print: Number of cars: 1
+    Car.increaseCount();
+    System.out.println("Number of cars: " + Car.numberOfCars); // Print: Number of cars: 2
   }
 }
