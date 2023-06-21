@@ -1,8 +1,10 @@
 (ns date-and-time.core
-  (:import java.time.format.DateTimeFormatter
+  (:import java.time.Duration
+           java.time.format.DateTimeFormatter
            java.time.LocalDate
            java.time.LocalDateTime
            java.time.LocalTime
+           java.time.Period
            java.time.ZonedDateTime
            java.time.ZoneId
            java.time.ZoneOffset))
@@ -98,7 +100,7 @@ formatted-date-time
 (str past-time)
 ;; => "14:36:24.039461"
 
-;; Comparing two times
+;; Comparing two temporal
 
 (-> today (.compareTo tomorrow))
 ;; => -1
@@ -113,6 +115,46 @@ formatted-date-time
 ;; => 1
 (-> future-time (.compareTo past-time))
 ;; => 1
+
+;; ---
+;; Duration between two temporal
+;; ---
+
+(def duration-datetime (Duration/between
+                        (LocalDateTime/now)
+                        (-> (LocalDateTime/now) (.plusDays 1) (.plusHours 12))))
+(str duration-datetime)
+;; => "PT36H0.000017S"
+(.toSeconds duration-datetime)
+;; => 129600
+(.toHours duration-datetime)
+;; => 36
+(.toDays duration-datetime)
+;; => 1
+
+(def duration-date (Period/between
+                    (LocalDate/now)
+                    (-> (LocalDate/now) (.plusDays 33))))
+(str duration-date)
+;; => "P1M3D"
+(.getDays duration-date)
+;; => 3
+(.getMonths duration-date)
+;; => 1
+(.toTotalMonths duration-date)
+;; => 1
+
+(def duration-time (Duration/between
+                    (LocalTime/now)
+                    (-> (LocalTime/now) (.plusHours 36))))
+(str duration-time)
+;; => "PT12H0.000013S"
+(.toSeconds duration-time)
+;; => 43200
+(.toHours duration-time)
+;; => 12
+(.toDays duration-time)
+;; => 0
 
 ;; ---
 ;; Working with timezone - get current-time
