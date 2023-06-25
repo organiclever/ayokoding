@@ -1,6 +1,6 @@
 package com.ayokoding.cookbook.java_class.intermediate.static_initializers;
 
-public class MainAnimal {
+public class Main {
   public static void main(String[] args) {
     new Animal();
     new Animal();
