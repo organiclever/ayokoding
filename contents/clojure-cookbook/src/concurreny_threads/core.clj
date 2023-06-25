@@ -25,9 +25,12 @@
 
 (def fav-book "Jaws")
 
-(defn make-emma-favorite [] (def fav-book "Emma"))
+(defn make-emma-favorite []
+  #_{:clj-kondo/ignore [:inline-def]}
+  (def fav-book "Emma"))
 (defn make-2001-favorite []
   (println "2001 is my favorite book")
+  #_{:clj-kondo/ignore [:inline-def]}
   (def fav-book "2001"))
 
 (make-emma-favorite)
