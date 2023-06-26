@@ -34,10 +34,10 @@ public class ControlStructures {
     // Switch
     switch (x) {
       case 1:
-        System.out.println("x is 1"); // This line will not be executed
+        System.out.println("x is 1"); // Output: x is 1
         break;
       case 2:
-        System.out.println("x is 2"); // Output: x is 2
+        System.out.println("x is 2"); // This line will not be executed
         break;
       default:
         System.out.println("x is neither 1 nor 2"); // This line will not be executed
@@ -48,7 +48,7 @@ public class ControlStructures {
 
     // While loop
     while (x < 5) {
-      System.out.print(x + " - "); // Output: 0 - 1 - 2 - 3 - 4 -
+      System.out.print(x + " - "); // Output: 1 - 2 - 3 - 4 -
       x++;
     }
     System.out.println(x); // Output: 5
