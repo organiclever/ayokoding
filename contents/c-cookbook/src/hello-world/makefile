@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
-TARGET_DIR = ../../target/$(notdir $(CURDIR))
+TARGET_DIR = ../../target/src/$(notdir $(CURDIR))
 
 SRCS = main.c
 OBJS = $(addprefix $(TARGET_DIR)/, $(SRCS:.c=.o))
@@ -16,6 +16,8 @@ $(TARGET): $(OBJS)
 $(TARGET_DIR)/%.o: %.c
 	@mkdir -p $(TARGET_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+build: $(TARGET)
 
 run: $(TARGET)
 	$(TARGET)
