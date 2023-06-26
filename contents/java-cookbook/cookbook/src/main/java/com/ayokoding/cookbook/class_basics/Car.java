@@ -1,4 +1,4 @@
-package com.ayokoding.cookbook.basics;
+package com.ayokoding.cookbook.class_basics;
 
 public class Car {
   // Fields (Class Variables)
