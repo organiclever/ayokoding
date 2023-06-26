@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -g
 TARGET_DIR = ../../target/src/$(notdir $(CURDIR))
 
-SRCS = main.c utility.c
+SRCS = $(wildcard *.c */*.c)
 OBJS = $(addprefix $(TARGET_DIR)/, $(SRCS:.c=.o))
 TARGET = $(TARGET_DIR)/program
 
