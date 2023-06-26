@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
-TARGET_DIR = target
+TARGET_DIR = ../../target/$(notdir $(CURDIR))
 
 SRCS = main.c
 OBJS = $(addprefix $(TARGET_DIR)/, $(SRCS:.c=.o))
