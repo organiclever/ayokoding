@@ -4,68 +4,68 @@
 
 ;; Whole file
 
-(def file-input "data_set/file_example_input.txt")
-(def file-output "data_set/file_example_output.txt")
+(def input-file "data_set/file_example_input.txt")
+(def output-file "data_set/file_example_output.txt")
 
-(slurp file-input)
+(slurp input-file)
 ;; => "Hi there!\nHello world!\nHola!\nHalo!"
 
-(spit file-output "Hello, world!")
+(spit output-file "Hello, world!")
 ;; => nil
-(slurp file-output)
+(slurp output-file)
 ;; => "Hello, world!"
 
-(spit file-output "\nHi there!" :append true)
+(spit output-file "\nHi there!" :append true)
 ;; => nil
-(slurp file-output)
+(slurp output-file)
 ;; => "Hello, world!\nHi there!"
 
 ;; Line by line
 
-(with-open [reader (io/reader file-input)]
+(with-open [reader (io/reader input-file)]
   (doall (mapv str (line-seq reader))))
 ;; => ["Hi there!" "Hello world!" "Hola!" "Halo!"]
 
-(with-open [writer (io/writer file-output)]
+(with-open [writer (io/writer output-file)]
   (doseq [line ["Hi there!" "Hello world!" "Hola!" "Halo!"]]
     (.write writer (str line "\n"))))
 ;; => nil
-(slurp file-output)
+(slurp output-file)
 ;; => "Hi there!\nHello world!\nHola!\nHalo!\n"
 
 ;; File Properties
 
-(.exists (io/file file-input))
+(.exists (io/file input-file))
 ;; => true
 
-(.setReadable (io/file file-input) false)
+(.setReadable (io/file input-file) false)
 ;; => true
-(.canRead (io/file file-input))
+(.canRead (io/file input-file))
 ;; => false
-(.setReadable (io/file file-input) true)
+(.setReadable (io/file input-file) true)
 ;; => true
-(.canRead (io/file file-input))
+(.canRead (io/file input-file))
 ;; => true
 
-(.setWritable (io/file file-input) false)
+(.setWritable (io/file input-file) false)
 ;; => true
-(.canWrite (io/file file-input))
+(.canWrite (io/file input-file))
 ;; => false
-(.setWritable (io/file file-input) true)
+(.setWritable (io/file input-file) true)
 ;; => true
-(.canWrite (io/file file-input))
+(.canWrite (io/file input-file))
 ;; => true
 
-(sh "chmod" "+x" file-input)
+(sh "chmod" "+x" input-file)
 ;; => {:exit 0, :out "", :err ""}
-(.canExecute (io/file file-input))
+(.canExecute (io/file input-file))
 ;; => true
-(sh "chmod" "-x" file-input)
+(sh "chmod" "-x" input-file)
 ;; => {:exit 0, :out "", :err ""}
-(.canExecute (io/file file-input))
+(.canExecute (io/file input-file))
 ;; => false
 
-(sh "chmod" "0644" file-input)
+(sh "chmod" "0644" input-file)
 ;; => {:exit 0, :out "", :err ""}
-(sh "ls" "-l" file-input)
+(sh "ls" "-l" input-file)
 ;; => {:exit 0, :out "-rw-r--r--@ 1 abcd  programmer  34 Jun 27 06:53 data_set/file_example_input.txt\n", :err ""}
