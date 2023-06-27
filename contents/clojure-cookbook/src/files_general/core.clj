@@ -2,10 +2,6 @@
   (:require [clojure.java.shell :refer [sh]]
             [clojure.java.io :as io]))
 
-;; ---
-;; File Manipulation
-;; ---
-
 ;; Whole file
 
 (def file-input "data_set/file_example_input.txt")
@@ -37,9 +33,7 @@
 (slurp file-output)
 ;; => "Hi there!\nHello world!\nHola!\nHalo!\n"
 
-;; ---
 ;; File Properties
-;; ---
 
 (.exists (io/file file-input))
 ;; => true
