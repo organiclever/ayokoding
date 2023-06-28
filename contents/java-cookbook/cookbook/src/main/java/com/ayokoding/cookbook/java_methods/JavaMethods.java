@@ -126,11 +126,12 @@ public class JavaMethods {
     System.out.println("Animal name: " + animal.getName()); // Output: Animal name: Tom
 
     Animal dog = examples.new Dog("Buddy");
-    dog.makeSound();
+    dog.makeSound(); // Output: Dog makes a sound
 
-    examples.divide(10, 2);
+    examples.divide(10, 2); // Output: Result: 5
+    examples.divide(10, 0); // Output: Error: / by zero
 
-    int sumResult = examples.addNumbers(2, 3);
-    System.out.println("Sum: " + sumResult);
+    int sumResult = examples.addNumbers(2, 3); // You can see the documentation by hovering over the method in your IDE
+    System.out.println("Sum: " + sumResult); // Output: Sum: 5
   }
 }
