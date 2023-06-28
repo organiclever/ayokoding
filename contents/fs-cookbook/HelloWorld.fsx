@@ -5,4 +5,6 @@ let main() =
 
     printfn "Current time is %s" (now.ToString("yyyy-MM-dd HH:mm:ss"))
 
+let test = 1
+
 main()
