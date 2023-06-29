@@ -12,3 +12,4 @@ logseq/bak/**
 .class
 .fake
 target
+.nrepl-port
