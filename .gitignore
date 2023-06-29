@@ -9,3 +9,6 @@ logseq/bak/**
 .cpcache
 .lsp
 .calva
+.class
+.fake
+target
