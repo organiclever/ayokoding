@@ -1,4 +1,4 @@
-package com.ayokoding.cookbook.data_types;
+package com.ayokoding.cookbook.data_types_primitive;
 
 public class PrimitiveLongOperations {
   public static void main(String[] args) {
