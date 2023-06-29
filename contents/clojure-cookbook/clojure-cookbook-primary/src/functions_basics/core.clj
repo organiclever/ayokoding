@@ -1,4 +1,4 @@
-(ns functions-basic.core)
+(ns functions-basics.core)
 
 (defn print-hello-world []
   (println "Hello world"))
