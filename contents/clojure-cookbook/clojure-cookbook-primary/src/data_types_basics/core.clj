@@ -1,4 +1,4 @@
-(ns data-types-basic.core)
+(ns data-types-basics.core)
 
 ;; ---
 ;; Basic data types

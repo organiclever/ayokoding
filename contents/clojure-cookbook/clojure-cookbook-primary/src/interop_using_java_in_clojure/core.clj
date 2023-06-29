@@ -1,4 +1,4 @@
-(ns interop-java-in-clojure.core
+(ns interop-using-java-in-clojure.core
   (:require
    [clojure.reflect :as reflect]))
 
