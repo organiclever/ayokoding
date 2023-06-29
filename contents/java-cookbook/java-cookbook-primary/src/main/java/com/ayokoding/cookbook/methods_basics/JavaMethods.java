@@ -1,4 +1,4 @@
-package com.ayokoding.cookbook.java_methods;
+package com.ayokoding.cookbook.methods_basics;
 
 public class JavaMethods {
   // 1. Method declaration and syntax
