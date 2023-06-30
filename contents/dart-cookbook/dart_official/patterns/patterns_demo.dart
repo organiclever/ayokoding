@@ -59,8 +59,8 @@ void main() {
   print(Ok(100).getOrElse(0));
   print(Error(100).getOrElse(0));
 
-  var theVal = Ok(100).map((String val) => val * 2).getOrElse(0);
-  print(theVal);
+  var theVal = Ok(100).map((int val) => val * 2).getOrElse(0);
+  print(theVal.runtimeType);
 
   print("---");
 
@@ -69,4 +69,6 @@ void main() {
 
   print(processResult(mapped));
   print(processResult(errorMapped));
+
+  print("---");
 }
