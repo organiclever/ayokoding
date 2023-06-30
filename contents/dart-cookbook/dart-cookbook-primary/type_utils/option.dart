@@ -53,6 +53,17 @@ sealed class Option<T> {
         return true;
     }
   }
+
+  bool isEqual(Option<T> other) {
+    switch ((this, other)) {
+      case (Some some, Some other):
+        return some.value == other.value;
+      case (None _, None _):
+        return true;
+      case _:
+        return false;
+    }
+  }
 }
 
 class Some<T> extends Option<T> {
@@ -61,10 +72,14 @@ class Some<T> extends Option<T> {
   Some(this.value);
 }
 
-class None<T> extends Option<T> {}
+class None<T> extends Option<T> {
+  final value = Null;
+}
 
 void main() {
-  // map
+  var x = Some(1).map((x) => x + 1);
+  print(x.isEqual(Some(2)));
+
   // flatmap
   // tap
   // getOrElse
