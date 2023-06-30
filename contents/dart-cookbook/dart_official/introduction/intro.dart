@@ -1,4 +1,4 @@
-import 'local_libs/fibonacci2.dart';
+import '../local_libs/fibonacci2.dart';
 
 void main() {
   print("Hello World");
