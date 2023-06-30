@@ -43,6 +43,38 @@ mixin Piloted {
   }
 }
 
+class PilotedCraft extends Spacecraft with Piloted {
+  PilotedCraft(String name, DateTime launchDate) : super(name, launchDate);
+}
+
+// all classes implicitly define an interface.
+class MockSpacehip implements Spacecraft {
+  @override
+  DateTime? launchDate;
+
+  @override
+  String name;
+
+  MockSpacehip(this.name);
+
+  @override
+  void describe() {}
+
+  @override
+  int? get launchYear => throw UnimplementedError();
+}
+
+// abstract classes can be extended or implemented
+abstract class Describable {
+  void describe();
+
+  void describeWithEmphasis() {
+    print('=========');
+    describe();
+    print('=========');
+  }
+}
+
 void main() {
   var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
   voyager.describe();
