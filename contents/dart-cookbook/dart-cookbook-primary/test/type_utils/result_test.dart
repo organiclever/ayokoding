@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import '../../type_utils/option.dart';
-import "../../type_utils/result.dart";
+import '../../src/type_utils/option.dart';
+import '../../src/type_utils/result.dart';
 
 void main() {
   group('Ok creation working correctly', () {
