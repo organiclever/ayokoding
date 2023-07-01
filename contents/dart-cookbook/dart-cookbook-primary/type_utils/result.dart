@@ -1,3 +1,5 @@
+import 'option.dart';
+
 sealed class Result<T, U> {
   bool isError() {
     switch (this) {
@@ -64,6 +66,15 @@ sealed class Result<T, U> {
     }
   }
 
+  Result<T1, U1> bimap<T1, U1>(T1 Function(T) f, U1 Function(U) g) {
+    switch (this) {
+      case (Ok ok):
+        return Ok(f(ok.value));
+      case (Error error):
+        return Error(g(error.value));
+    }
+  }
+
   Result<T, U> tap(void Function(T) f) {
     switch (this) {
       case (Ok ok):
@@ -80,6 +91,17 @@ sealed class Result<T, U> {
         return Ok(ok.value);
       case (Error error):
         f(error.value);
+        return Error(error.value);
+    }
+  }
+
+  Result<T, U> bitap(void Function(T) f, void Function(U) g) {
+    switch (this) {
+      case (Ok ok):
+        f(ok.value);
+        return Ok(ok.value);
+      case (Error error):
+        g(error.value);
         return Error(error.value);
     }
   }
@@ -102,9 +124,23 @@ sealed class Result<T, U> {
     }
   }
 
-  // getOk => Option
+  Option<T> getOk() {
+    switch (this) {
+      case (Ok ok):
+        return Some(ok.value);
+      case (Error _):
+        return None();
+    }
+  }
 
-  // getError
+  Option<U> getError() {
+    switch (this) {
+      case (Ok _):
+        return None();
+      case (Error error):
+        return Some(error.value);
+    }
+  }
 }
 
 class Ok<T, U> extends Result<T, U> {
