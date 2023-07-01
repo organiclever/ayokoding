@@ -116,4 +116,22 @@ void main() {
       expect(called, equals(true));
     });
   });
+
+  group("getOrElse working correctly", () {
+    test("getOrElse working correctly for Ok", () {
+      expect(Ok(1).getOrElse(2), equals(1));
+    });
+    test("getOrElse working correctly for Error", () {
+      expect(Error(1).getOrElse(2), equals(2));
+    });
+  });
+
+  group("getErrorOrElse working correctly", () {
+    test("getErrorOrElse working correctly for Ok", () {
+      expect(Ok(1).getErrorOrElse(2), equals(2));
+    });
+    test("getErrorOrElse working correctly for Error", () {
+      expect(Error(1).getErrorOrElse(2), equals(1));
+    });
+  });
 }

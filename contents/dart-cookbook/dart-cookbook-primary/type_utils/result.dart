@@ -93,7 +93,14 @@ sealed class Result<T, U> {
     }
   }
 
-  // getErrorOrElse
+  U getErrorOrElse(U defVal) {
+    switch (this) {
+      case (Ok _):
+        return defVal;
+      case (Error error):
+        return error.value;
+    }
+  }
 
   // getOk => Option
 
