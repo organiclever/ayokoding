@@ -3,7 +3,7 @@ import "../../type_utils/option.dart";
 
 void main() {
   group('None creation working correctly', () {
-    test('None will return default value when getOrElse', () {
+    test('None is equal to other None', () {
       expect(None().isEqual(None()), equals(true));
     });
     test('None is None', () {
@@ -13,8 +13,9 @@ void main() {
       expect(None().isSome(), equals(false));
     });
   });
+
   group('Some creation working correctly', () {
-    test('None will return default value when getOrElse', () {
+    test('Some is equal to other Some', () {
       expect(Some(1).isEqual(Some(1)), equals(true));
     });
     test('Some is Some', () {
@@ -24,6 +25,7 @@ void main() {
       expect(Some(1).isNone(), equals(false));
     });
   });
+
   group('Map working correctly', () {
     test('Map working correctly for Some', () {
       expect(Some(1).map((x) => x + 1).isEqual(Some(2)), equals(true));

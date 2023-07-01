@@ -1,4 +1,33 @@
 sealed class Result<T, U> {
+  bool isError() {
+    switch (this) {
+      case (Ok _):
+        return false;
+      case (Error _):
+        return true;
+    }
+  }
+
+  bool isOk() {
+    switch (this) {
+      case (Ok _):
+        return true;
+      case (Error _):
+        return false;
+    }
+  }
+
+  bool isEqual(Result<T, U> other) {
+    switch ((this, other)) {
+      case (Ok ok, Ok other):
+        return ok.value == other.value;
+      case (Error error, Error other):
+        return error.value == other.value;
+      default:
+        return false;
+    }
+  }
+
   Result<T1, U> map<T1>(T1 Function(T) f) {
     switch (this) {
       case (Ok ok):
@@ -36,10 +65,6 @@ sealed class Result<T, U> {
 
   // getErrorOrElse
 
-  // isOk
-
-  // isError
-
   // getOk => Option
 
   // getError
@@ -55,22 +80,4 @@ class Error<T, U> extends Result<T, U> {
   final U value;
 
   Error(this.value);
-}
-
-void main() {
-  var res = Ok<int, String>(1);
-  print(res);
-
-  var okMapRes = Ok<int, String>(1).map((x) => x.toString());
-  var okMapErrorRes = Ok<int, String>(1).mapError((e) => e.toUpperCase());
-  var errorMapRes =
-      Error<int, String>("something wrong").map((x) => x.toString());
-  var errorMapErrorRes =
-      Error<int, String>("something wrong").mapError((e) => e.toUpperCase());
-
-  print(okMapRes.getOrElse("nothing")); // Output: 1
-  print(okMapErrorRes.getOrElse(0)); // Output: 1
-  print(errorMapRes
-      .getOrElse("default error message")); // Output: default error message
-  print(errorMapErrorRes.getOrElse(0));
 }
