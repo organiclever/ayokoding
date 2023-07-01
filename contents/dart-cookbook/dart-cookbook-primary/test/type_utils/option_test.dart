@@ -38,9 +38,17 @@ void main() {
   group('map working correctly', () {
     test('map working correctly for Some', () {
       expect(Some(1).map((x) => x + 1).isEqual(Some(2)), equals(true));
-    });
-    test('map working correctly for Some', () {
       expect(Some("hello").map((x) => x.toUpperCase()).isEqual(Some("HELLO")),
+          equals(true));
+    });
+    test('map chaining working correctly for Some', () {
+      expect(Some(1).map((x) => x + 1).map((x) => x + 1).isEqual(Some(3)),
+          equals(true));
+      expect(
+          Some("hello")
+              .map((x) => x.toUpperCase())
+              .map((x) => x.toLowerCase())
+              .isEqual(Some("hello")),
           equals(true));
     });
     test('map working correctly for None', () {
