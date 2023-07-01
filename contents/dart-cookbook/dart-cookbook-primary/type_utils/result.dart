@@ -106,24 +106,6 @@ sealed class Result<T, U> {
     }
   }
 
-  T getOrElse(T defVal) {
-    switch (this) {
-      case (Ok ok):
-        return ok.value;
-      case (Error _):
-        return defVal;
-    }
-  }
-
-  U getErrorOrElse(U defVal) {
-    switch (this) {
-      case (Ok _):
-        return defVal;
-      case (Error error):
-        return error.value;
-    }
-  }
-
   Option<T> getOk() {
     switch (this) {
       case (Ok ok):
@@ -139,6 +121,24 @@ sealed class Result<T, U> {
         return None();
       case (Error error):
         return Some(error.value);
+    }
+  }
+
+  T getOrElse(T defVal) {
+    switch (this) {
+      case (Ok ok):
+        return ok.value;
+      case (Error _):
+        return defVal;
+    }
+  }
+
+  U getErrorOrElse(U defVal) {
+    switch (this) {
+      case (Ok _):
+        return defVal;
+      case (Error error):
+        return error.value;
     }
   }
 }

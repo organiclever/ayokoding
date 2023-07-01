@@ -161,6 +161,24 @@ void main() {
     });
   });
 
+  group("getOk working correctly", () {
+    test("getOk working correctly for Ok", () {
+      expect(Ok(1).getOk().isEqual(Some(1)), equals(true));
+    });
+    test("getOk working correctly for Error", () {
+      expect(Error(1).getOk().isEqual(None()), equals(true));
+    });
+  });
+
+  group("getError working correctly", () {
+    test("getError working correctly for Ok", () {
+      expect(Ok(1).getError().isEqual(None()), equals(true));
+    });
+    test("getError working correctly for Error", () {
+      expect(Error(1).getError().isEqual(Some(1)), equals(true));
+    });
+  });
+
   group("getOrElse working correctly", () {
     test("getOrElse working correctly for Ok", () {
       expect(Ok(1).getOrElse(2), equals(1));
@@ -176,15 +194,6 @@ void main() {
     });
     test("getErrorOrElse working correctly for Error", () {
       expect(Error(1).getErrorOrElse(2), equals(1));
-    });
-  });
-
-  group("getOk working correctly", () {
-    test("getOk working correctly for Ok", () {
-      expect(Ok(1).getOk().isEqual(Some(1)), equals(true));
-    });
-    test("getOk working correctly for Error", () {
-      expect(Error(1).getOk().isEqual(None()), equals(true));
     });
   });
 }
