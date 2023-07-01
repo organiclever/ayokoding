@@ -30,6 +30,42 @@ sealed class Result<T, U> {
     }
   }
 
+  Option<T> getOk() {
+    switch (this) {
+      case (Ok ok):
+        return Some(ok.value);
+      case (Error _):
+        return None();
+    }
+  }
+
+  Option<U> getError() {
+    switch (this) {
+      case (Ok _):
+        return None();
+      case (Error error):
+        return Some(error.value);
+    }
+  }
+
+  T getOrElse(T defVal) {
+    switch (this) {
+      case (Ok ok):
+        return ok.value;
+      case (Error _):
+        return defVal;
+    }
+  }
+
+  U getErrorOrElse(U defVal) {
+    switch (this) {
+      case (Ok _):
+        return defVal;
+      case (Error error):
+        return error.value;
+    }
+  }
+
   Result<T1, U> map<T1>(T1 Function(T) f) {
     switch (this) {
       case (Ok ok):
@@ -103,42 +139,6 @@ sealed class Result<T, U> {
       case (Error error):
         g(error.value);
         return Error(error.value);
-    }
-  }
-
-  Option<T> getOk() {
-    switch (this) {
-      case (Ok ok):
-        return Some(ok.value);
-      case (Error _):
-        return None();
-    }
-  }
-
-  Option<U> getError() {
-    switch (this) {
-      case (Ok _):
-        return None();
-      case (Error error):
-        return Some(error.value);
-    }
-  }
-
-  T getOrElse(T defVal) {
-    switch (this) {
-      case (Ok ok):
-        return ok.value;
-      case (Error _):
-        return defVal;
-    }
-  }
-
-  U getErrorOrElse(U defVal) {
-    switch (this) {
-      case (Ok _):
-        return defVal;
-      case (Error error):
-        return error.value;
     }
   }
 }
