@@ -28,22 +28,22 @@ void main() {
     });
   });
 
-  group("Map working correctly", () {
-    test("Map working correctly for Ok", () {
+  group("map working correctly", () {
+    test("map working correctly for Ok", () {
       expect(Ok(1).map((x) => x + 1).isEqual(Ok(2)), equals(true));
       expect(Ok("hello").map((x) => x.toUpperCase()).isEqual(Ok("HELLO")),
           equals(true));
     });
-    test("Map working correctly for Error", () {
+    test("map working correctly for Error", () {
       expect(Error(1).map((x) => x + 1).isEqual(Error(1)), equals(true));
     });
   });
 
-  group("MapError working correctly", () {
-    test("MapError working correctly for Ok", () {
+  group("mapError working correctly", () {
+    test("mapError working correctly for Ok", () {
       expect(Ok(1).mapError((x) => x + 1).isEqual(Ok(1)), equals(true));
     });
-    test("MapError working correctly for Error", () {
+    test("mapError working correctly for Error", () {
       expect(Error(1).mapError((x) => x + 1).isEqual(Error(2)), equals(true));
       expect(
           Error("hello")

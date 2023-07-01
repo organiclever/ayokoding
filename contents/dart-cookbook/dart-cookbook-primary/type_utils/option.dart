@@ -75,14 +75,3 @@ class Some<T> extends Option<T> {
 class None<T> extends Option<T> {
   final value = Null;
 }
-
-void main() {
-  var x = Some(1).map((x) => x + 1);
-  print(x.isEqual(Some(2)));
-
-  // flatmap
-  // tap
-  // getOrElse
-  // isSome
-  // isNone}
-}
