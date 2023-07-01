@@ -52,4 +52,22 @@ void main() {
           equals(true));
     });
   });
+
+  group("flatmap working correctly", () {
+    test("flatmap working correctly for Ok", () {
+      expect(Ok(1).flatmap((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
+      expect(
+          Ok("hello").flatmap((x) => Ok(x.toUpperCase())).isEqual(Ok("HELLO")),
+          equals(true));
+    });
+    test("flatmap working correctly for Error", () {
+      expect(
+          Ok(1).flatmap((x) => Error(x + 1)).isEqual(Error(2)), equals(true));
+      expect(
+          Ok("hello")
+              .flatmap((x) => Error(x.toUpperCase()))
+              .isEqual(Error("HELLO")),
+          equals(true));
+    });
+  });
 }
