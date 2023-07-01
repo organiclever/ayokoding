@@ -82,4 +82,21 @@ void main() {
           equals(true));
     });
   });
+
+  group("tap working correctly", () {
+    test("tap working correctly for Ok", () {
+      var called = false;
+      var aResult = Ok(1).tap((x) => called = true);
+
+      expect(aResult.isEqual(Ok(1)), equals(true));
+      expect(called, equals(true));
+    });
+    test("tap working correctly for Error", () {
+      var called = false;
+      var aResult = Error(1).tap((x) => called = true);
+
+      expect(aResult.isEqual(Error(1)), equals(true));
+      expect(called, equals(false));
+    });
+  });
 }

@@ -64,11 +64,25 @@ sealed class Result<T, U> {
     }
   }
 
-  // bimap
+  Result<T, U> tap(void Function(T) f) {
+    switch (this) {
+      case (Ok ok):
+        f(ok.value);
+        return Ok(ok.value);
+      case (Error error):
+        return Error(error.value);
+    }
+  }
 
-  // tap
-
-  // tapError
+  Result<T, U> tapError(void Function(U) f) {
+    switch (this) {
+      case (Ok ok):
+        return Ok(ok.value);
+      case (Error error):
+        f(error.value);
+        return Error(error.value);
+    }
+  }
 
   T getOrElse(T defVal) {
     switch (this) {
