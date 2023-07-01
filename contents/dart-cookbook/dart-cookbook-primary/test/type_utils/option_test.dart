@@ -24,4 +24,12 @@ void main() {
       expect(Some(1).isNone(), equals(false));
     });
   });
+  group('Map working correctly', () {
+    test('Map working correctly for Some', () {
+      expect(Some(1).map((x) => x + 1).isEqual(Some(2)), equals(true));
+    });
+    test('Map working correctly for None', () {
+      expect(None().map((x) => x + 1).isEqual(None()), equals(true));
+    });
+  });
 }
