@@ -55,7 +55,14 @@ sealed class Result<T, U> {
     }
   }
 
-  // flatmap
+  Result<T, U1> flatmapError<U1>(Result<T, U1> Function(U) f) {
+    switch (this) {
+      case (Ok ok):
+        return Ok(ok.value);
+      case (Error error):
+        return f(error.value);
+    }
+  }
 
   // bimap
 

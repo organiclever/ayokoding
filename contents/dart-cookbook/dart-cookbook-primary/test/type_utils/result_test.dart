@@ -70,4 +70,16 @@ void main() {
           equals(true));
     });
   });
+
+  group("flatmapError working correctly", () {
+    test("flatmapError working correctly for Ok", () {
+      expect(Ok(1).flatmapError((x) => Ok(x + 1)).isEqual(Ok(1)), equals(true));
+    });
+    test("flatmapError working correctly for Error", () {
+      expect(
+          Error(1).flatmapError((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
+      expect(Error(1).flatmapError((x) => Error(x + 1)).isEqual(Error(2)),
+          equals(true));
+    });
+  });
 }
