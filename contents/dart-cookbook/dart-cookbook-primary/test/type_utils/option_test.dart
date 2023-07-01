@@ -28,6 +28,10 @@ void main() {
     test('Map working correctly for Some', () {
       expect(Some(1).map((x) => x + 1).isEqual(Some(2)), equals(true));
     });
+    test('Map working correctly for Some', () {
+      expect(Some("hello").map((x) => x.toUpperCase()).isEqual(Some("HELLO")),
+          equals(true));
+    });
     test('Map working correctly for None', () {
       expect(None().map((x) => x + 1).isEqual(None()), equals(true));
     });
