@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 sealed class Option<T> {
   bool isSome() {
     switch (this) {
