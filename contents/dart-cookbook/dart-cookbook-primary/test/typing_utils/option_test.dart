@@ -1,6 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 import '../../src/typing_utils/option.dart';
-import 'package:collection/equality.dart';
 
 void main() {
   group('None creation working correctly', () {
@@ -40,14 +40,16 @@ void main() {
     test('map working correctly for None', () {
       expect(None().map((x) => x + 1).isEqual(None()), equals(true));
     });
-    test('map chaining working correctly for Some number', () {
+    test('map working correctly for Some number', () {
       var someNumber = Some(1);
+
       expect(someNumber.map((x) => x + 1).map((x) => x + 1).isEqual(Some(3)),
           equals(true));
       expect(someNumber.isEqual(Some(1)), equals(true));
     });
-    test('map chaining working correctly for Some string', () {
+    test('map working correctly for Some string', () {
       var someString = Some("hello");
+
       expect(
           someString
               .map((x) => x.toUpperCase())
@@ -56,33 +58,66 @@ void main() {
           equals(true));
       expect(someString.isEqual(Some("hello")), equals(true));
     });
-    test('map chaining working correctly for Some record', () {
+    test('map working correctly for Some record', () {
       var someRecord = Some((name: "John", age: 30));
+
       expect(someRecord.map((x) => x.name.toUpperCase()).isEqual(Some("JOHN")),
           equals(true));
       expect(someRecord.isEqual(Some((name: "John", age: 30))), equals(true));
     });
-    test('map chaining working correctly for Some list', () {
+    test('map working correctly for Some list', () {
       var someList = Some([1, 2, 3]);
       var processedList =
           someList.map((x) => x.map((y) => y + 1).toList()).getOrElse([]);
-      expect(IterableEquality().equals(processedList, [2, 3, 4]), equals(true));
+
+      expect(ListEquality().equals(processedList, [2, 3, 4]), equals(true));
+      expect(ListEquality().equals(someList.getOrElse([]), [1, 2, 3]),
+          equals(true));
     });
   });
 
   group("flatmap working correctly", () {
-    test("flatmap working correctly for Some", () {
-      expect(
-          Some(1).flatmap((x) => Some(x + 1)).isEqual(Some(2)), equals(true));
-      expect(
-          Some(1)
-              .flatmap((x) => Some(x + 1))
-              .flatmap((x) => Some(x + 1))
-              .isEqual(Some(3)),
-          equals(true));
-    });
     test("flatmap working correctly for None", () {
       expect(None().flatmap((x) => Some(x + 1)).isEqual(None()), equals(true));
+    });
+    test('flatmap working correctly for Some number', () {
+      var someNumber = Some(1);
+
+      expect(someNumber.flatmap((x) => Some(x + 1)).isEqual(Some(2)),
+          equals(true));
+      expect(someNumber.isEqual(Some(1)), equals(true));
+    });
+    test('flatmap working correctly for Some string', () {
+      var someString = Some("hello");
+
+      expect(
+          someString
+              .flatmap((x) => Some(x.toUpperCase()))
+              .isEqual(Some("HELLO")),
+          equals(true));
+
+      expect(someString.isEqual(Some("hello")), equals(true));
+    });
+    test('flatmap working correctly for Some record', () {
+      var someRecord = Some((name: "John", age: 30));
+
+      expect(
+          someRecord
+              .flatmap((x) => Some(x.name.toUpperCase()))
+              .isEqual(Some("JOHN")),
+          equals(true));
+
+      expect(someRecord.isEqual(Some((name: "John", age: 30))), equals(true));
+    });
+    test('flatmap working correctly for Some list', () {
+      var someList = Some([1, 2, 3]);
+      var processedList = someList
+          .flatmap((x) => Some(x.map((y) => y + 1).toList()))
+          .getOrElse([]);
+
+      expect(ListEquality().equals(processedList, [2, 3, 4]), equals(true));
+      expect(ListEquality().equals(someList.getOrElse([]), [1, 2, 3]),
+          equals(true));
     });
   });
 

@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 sealed class Option<T> {
   bool isSome() {
     switch (this) {
@@ -77,14 +79,5 @@ class None<T> extends Option<T> {
 }
 
 void main() {
-  var someList = Some([1, 2, 3]);
-  print(someList.map((x) => x.map((y) => y + 1).toList()).tap((p0) {
-    print(p0);
-  }).isEqual(Some([2, 3, 4])));
-
-  print([2, 3, 4] == [2, 3, 4]);
-
-  someList.tap((p0) {
-    print(p0);
-  });
+  print(ListEquality().equals([2, 3, 4], [2, 3, 4]));
 }
