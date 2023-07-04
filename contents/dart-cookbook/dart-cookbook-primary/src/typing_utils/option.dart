@@ -77,7 +77,3 @@ class Some<T> extends Option<T> {
 class None<T> extends Option<T> {
   final value = Null;
 }
-
-void main() {
-  print(ListEquality().equals([2, 3, 4], [2, 3, 4]));
-}
