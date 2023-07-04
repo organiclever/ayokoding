@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "*.json.liquid": "json",
+    "*.yaml.liquid": "yaml",
+    "*.md.liquid": "markdown",
+    "*.js.liquid": "liquid-javascript",
+    "*.css.liquid": "liquid-css",
+    "*.scss.liquid": "liquid-scss",
+    ".atd": "ocaml",
+    "*.css": "tailwindcss",
+    ".ideavimrc": "vimrc",
+    ".zsh*rc": "shellscript",
+    "**/*.html": "html",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "docker-compose-*.yml": "dockercompose",
+    "stdio.h": "c"
+  }
+}

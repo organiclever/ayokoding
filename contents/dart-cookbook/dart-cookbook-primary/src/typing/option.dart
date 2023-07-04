@@ -75,3 +75,15 @@ class Some<T> extends Option<T> {
 class None<T> extends Option<T> {
   final value = Null;
 }
+
+void main() {
+  var someNumber = Some(1);
+  Option<int> noneNumber = None();
+
+  var result = someNumber.map((x) => x + 1).map((x) => x * 2);
+  var resultNone = noneNumber.map((x) => x + 1).map((x) => x * 2);
+
+  print(someNumber.getOrElse(0));
+  print(result.getOrElse(0));
+  print(resultNone.getOrElse(0));
+}

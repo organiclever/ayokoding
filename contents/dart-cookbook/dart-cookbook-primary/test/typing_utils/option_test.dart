@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:test/test.dart';
-import '../../src/typing_utils/option.dart';
+import '../../src/typing/option.dart';
 
 void main() {
   group('None creation working correctly', () {
