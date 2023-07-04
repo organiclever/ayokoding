@@ -123,14 +123,14 @@ void main() {
   });
 
   group("tapError working correctly", () {
-    test("tapError working correctly for Ok", () {
+    test("tapError for Ok", () {
       var called = false;
       var aResult = Ok(1).tapError((x) => called = true);
 
       expect(aResult.isEqual(Ok(1)), equals(true));
       expect(called, equals(false));
     });
-    test("tapError working correctly for Error", () {
+    test("tapError for Error", () {
       var called = false;
       var aResult = Error(1).tapError((x) => called = true);
 
@@ -140,7 +140,7 @@ void main() {
   });
 
   group("bitap working correctly", () {
-    test("bitap working correctly for Ok", () {
+    test("bitap for Ok", () {
       var xCalled = false;
       var eCalled = false;
       var aResult = Ok(1).bitap((x) => xCalled = true, (x) => eCalled = true);
@@ -149,7 +149,7 @@ void main() {
       expect(xCalled, equals(true));
       expect(eCalled, equals(false));
     });
-    test("bitap working correctly for Error", () {
+    test("bitap for Error", () {
       var xCalled = false;
       var eCalled = false;
       var aResult =
@@ -162,37 +162,37 @@ void main() {
   });
 
   group("getOk working correctly", () {
-    test("getOk working correctly for Ok", () {
+    test("getOk for Ok", () {
       expect(Ok(1).getOk().isEqual(Some(1)), equals(true));
     });
-    test("getOk working correctly for Error", () {
+    test("getOk for Error", () {
       expect(Error(1).getOk().isEqual(None()), equals(true));
     });
   });
 
   group("getError working correctly", () {
-    test("getError working correctly for Ok", () {
+    test("getError for Ok", () {
       expect(Ok(1).getError().isEqual(None()), equals(true));
     });
-    test("getError working correctly for Error", () {
+    test("getError for Error", () {
       expect(Error(1).getError().isEqual(Some(1)), equals(true));
     });
   });
 
   group("getOrElse working correctly", () {
-    test("getOrElse working correctly for Ok", () {
+    test("getOrElse for Ok", () {
       expect(Ok(1).getOrElse(2), equals(1));
     });
-    test("getOrElse working correctly for Error", () {
+    test("getOrElse for Error", () {
       expect(Error(1).getOrElse(2), equals(2));
     });
   });
 
   group("getErrorOrElse working correctly", () {
-    test("getErrorOrElse working correctly for Ok", () {
+    test("getErrorOrElse for Ok", () {
       expect(Ok(1).getErrorOrElse(2), equals(2));
     });
-    test("getErrorOrElse working correctly for Error", () {
+    test("getErrorOrElse for Error", () {
       expect(Error(1).getErrorOrElse(2), equals(1));
     });
   });
