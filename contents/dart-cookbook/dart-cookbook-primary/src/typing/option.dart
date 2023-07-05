@@ -64,6 +64,15 @@ sealed class Option<T> {
         return None();
     }
   }
+
+  String toString() {
+    switch (this) {
+      case (Some some):
+        return "Some(${some.value})";
+      case (None _):
+        return "None";
+    }
+  }
 }
 
 class Some<T> extends Option<T> {
@@ -83,7 +92,9 @@ void main() {
   var result = someNumber.map((x) => x + 1).map((x) => x * 2);
   var resultNone = noneNumber.map((x) => x + 1).map((x) => x * 2);
 
-  print(someNumber.getOrElse(0));
-  print(result.getOrElse(0));
-  print(resultNone.getOrElse(0));
+  print(someNumber);
+  print(result);
+  print(resultNone);
+
+  print(Some("hello"));
 }

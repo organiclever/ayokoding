@@ -137,4 +137,14 @@ void main() {
       expect(called, equals(false));
     });
   });
+
+  group("printing override working correctly", () {
+    test("printing for Some", () {
+      expect(Some(1).toString(), equals("Some(1)"));
+      expect(Some("hello").toString(), equals("Some(hello)"));
+    });
+    test("printing for None", () {
+      expect(None().toString(), equals("None"));
+    });
+  });
 }
