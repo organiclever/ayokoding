@@ -88,13 +88,38 @@ class None<T> extends Option<T> {
 void main() {
   var someNumber = Some(1);
   Option<int> noneNumber = None();
+  var someString = Some("hello");
+  Option<String> noneString = None();
 
-  var result = someNumber.map((x) => x + 1).map((x) => x * 2);
-  var resultNone = noneNumber.map((x) => x + 1).map((x) => x * 2);
+  print(someNumber); // Output: Some(1)
+  print(noneNumber); // Output: None
+  print(someString); // Output: Some(hello)
+  print(noneString); // Output: None
 
-  print(someNumber);
-  print(result);
-  print(resultNone);
+  print(someNumber.isSome()); // Output: true
+  print(someNumber.isNone()); // Output: false
 
-  print(Some("hello"));
+  print(someNumber.isEqual(Some(1))); // Output: true
+  print(someNumber.isEqual(None())); // Output: false
+
+  print(someNumber.getOrElse(2)); // Output: 1
+  print(noneNumber.getOrElse(2)); // Output: 2
+
+  print(someNumber.map((x) => x + 1)); // Output: Some(2)
+  print(someString.map((x) => x + " world")); // Output: Some(hello world)
+  print(noneNumber.map((x) => x + 1)); // Output: None
+  print(someNumber.map((x) => x + 1).map((x) => x * 3)); // Output: Some(6)
+  print(someNumber); // Output: Some(1)
+
+  print(someNumber.flatmap((x) => Some(x + 1))); // Output: Some(2)
+  print(someString
+      .flatmap((x) => Some(x + " world"))); // Output: Some(hello world)
+  print(noneNumber.flatmap((x) => Some(x + 1))); // Output: None
+  print(someNumber
+      .flatmap((x) => Some(x + 1))
+      .flatmap((x) => Some(x * 3))); // Output: Some(6)
+
+  print(someNumber.tap((p0) {
+    print(p0);
+  })); // Output: Some(1), but print 1 first
 }
