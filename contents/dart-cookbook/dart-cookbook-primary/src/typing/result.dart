@@ -164,4 +164,19 @@ class Error<T, U> extends Result<T, U> {
   Error(this.value);
 }
 
-void main() {}
+void main() {
+  Result<int, String> okNumber = Ok(1);
+  Result<String, int> okString = Ok("hello");
+  Result<String, int> errorNumber = Error(404);
+  Result<String, String> errorString = Error("not found");
+
+  print(okNumber); // Output: Ok(1)
+  print(okString); // Output: Ok(hello)
+  print(errorNumber); // Output: Error(404)
+  print(errorString); // Output: Error(not found)
+
+  print(okNumber.isOk()); // Output: true
+  print(okNumber.isError()); // Output: false
+  print(errorNumber.isOk()); // Output: false
+  print(errorNumber.isError()); // Output: true
+}
