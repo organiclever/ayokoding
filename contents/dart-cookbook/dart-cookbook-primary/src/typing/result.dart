@@ -141,6 +141,15 @@ sealed class Result<T, U> {
         return Error(error.value);
     }
   }
+
+  String toString() {
+    switch (this) {
+      case (Ok ok):
+        return "Ok(${ok.value})";
+      case (Error error):
+        return "Error(${error.value})";
+    }
+  }
 }
 
 class Ok<T, U> extends Result<T, U> {
@@ -155,15 +164,4 @@ class Error<T, U> extends Result<T, U> {
   Error(this.value);
 }
 
-void main() {
-  Result<int, String> resultOk = Ok(2);
-  Result<int, String> resultError = Error("something went wrong");
-
-  var processedResultOk = resultOk.map((val) => val * 2).map((val) => val + 1);
-  var processedResultError =
-      resultError.map((val) => val * 2).map((val) => val + 1);
-
-  print(processedResultOk.getOk().getOrElse(0));
-  print(processedResultError.getOk().getOrElse(0));
-  print(processedResultError.getError().getOrElse("test"));
-}
+void main() {}

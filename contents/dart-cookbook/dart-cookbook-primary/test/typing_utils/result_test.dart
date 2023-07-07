@@ -196,4 +196,15 @@ void main() {
       expect(Error(1).getErrorOrElse(2), equals(1));
     });
   });
+
+  group("printing override working correctly", () {
+    test("printing override working correctly for Ok", () {
+      expect(Ok(1).toString(), equals("Ok(1)"));
+      expect(Ok("hello").toString(), equals("Ok(hello)"));
+    });
+    test("printing override working correctly for Error", () {
+      expect(Error(1).toString(), equals("Error(1)"));
+      expect(Error("hello").toString(), equals("Error(hello)"));
+    });
+  });
 }
