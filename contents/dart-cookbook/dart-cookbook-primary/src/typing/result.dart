@@ -30,6 +30,15 @@ sealed class Result<T, U> {
     }
   }
 
+  String toString() {
+    switch (this) {
+      case (Ok ok):
+        return "Ok(${ok.value})";
+      case (Error error):
+        return "Error(${error.value})";
+    }
+  }
+
   Option<T> getOk() {
     switch (this) {
       case (Ok ok):
@@ -139,15 +148,6 @@ sealed class Result<T, U> {
       case (Error error):
         g(error.value);
         return Error(error.value);
-    }
-  }
-
-  String toString() {
-    switch (this) {
-      case (Ok ok):
-        return "Ok(${ok.value})";
-      case (Error error):
-        return "Error(${error.value})";
     }
   }
 }

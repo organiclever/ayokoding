@@ -29,11 +29,64 @@ void main() {
     });
   });
 
+  group("printing override working correctly", () {
+    test("printing override working correctly for Ok", () {
+      expect(Ok(1).toString(), equals("Ok(1)"));
+      expect(Ok("hello").toString(), equals("Ok(hello)"));
+    });
+    test("printing override working correctly for Error", () {
+      expect(Error(1).toString(), equals("Error(1)"));
+      expect(Error("hello").toString(), equals("Error(hello)"));
+    });
+  });
+
+  group("getOk working correctly", () {
+    test("getOk for Ok", () {
+      expect(Ok(1).getOk().isEqual(Some(1)), equals(true));
+    });
+    test("getOk for Error", () {
+      expect(Error(1).getOk().isEqual(None()), equals(true));
+    });
+  });
+
+  group("getError working correctly", () {
+    test("getError for Ok", () {
+      expect(Ok(1).getError().isEqual(None()), equals(true));
+    });
+    test("getError for Error", () {
+      expect(Error(1).getError().isEqual(Some(1)), equals(true));
+    });
+  });
+
+  group("getOrElse working correctly", () {
+    test("getOrElse for Ok", () {
+      expect(Ok(1).getOrElse(2), equals(1));
+    });
+    test("getOrElse for Error", () {
+      expect(Error(1).getOrElse(2), equals(2));
+    });
+  });
+
+  group("getErrorOrElse working correctly", () {
+    test("getErrorOrElse for Ok", () {
+      expect(Ok(1).getErrorOrElse(2), equals(2));
+    });
+    test("getErrorOrElse for Error", () {
+      expect(Error(1).getErrorOrElse(2), equals(1));
+    });
+  });
+
   group("map working correctly", () {
     test("map working correctly for Ok", () {
-      expect(Ok(1).map((x) => x + 1).isEqual(Ok(2)), equals(true));
-      expect(Ok("hello").map((x) => x.toUpperCase()).isEqual(Ok("HELLO")),
+      var okInt = Ok(1);
+      var okString = Ok("hello");
+
+      expect(okInt.map((x) => x + 1).isEqual(Ok(2)), equals(true));
+      expect(okInt.isEqual(Ok(1)), equals(true));
+
+      expect(okString.map((x) => x.toUpperCase()).isEqual(Ok("HELLO")),
           equals(true));
+      expect(okString.isEqual(Ok("hello")), equals(true));
     });
     test("map working correctly for Error", () {
       expect(Error(1).map((x) => x + 1).isEqual(Error(1)), equals(true));
@@ -45,21 +98,30 @@ void main() {
       expect(Ok(1).mapError((x) => x + 1).isEqual(Ok(1)), equals(true));
     });
     test("mapError working correctly for Error", () {
-      expect(Error(1).mapError((x) => x + 1).isEqual(Error(2)), equals(true));
+      var errorInt = Error(1);
+      var errorString = Error("hello");
+
+      expect(errorInt.mapError((x) => x + 1).isEqual(Error(2)), equals(true));
+      expect(errorInt.isEqual(Error(1)), equals(true));
+
       expect(
-          Error("hello")
-              .mapError((x) => x.toUpperCase())
-              .isEqual(Error("HELLO")),
+          errorString.mapError((x) => x.toUpperCase()).isEqual(Error("HELLO")),
           equals(true));
+      expect(errorString.isEqual(Error("hello")), equals(true));
     });
   });
 
   group("flatmap working correctly", () {
     test("flatmap working correctly for Ok", () {
-      expect(Ok(1).flatmap((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
-      expect(
-          Ok("hello").flatmap((x) => Ok(x.toUpperCase())).isEqual(Ok("HELLO")),
+      var okInt = Ok(1);
+      var okString = Ok("hello");
+
+      expect(okInt.flatmap((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
+      expect(okInt.isEqual(Ok(1)), equals(true));
+
+      expect(okString.flatmap((x) => Ok(x.toUpperCase())).isEqual(Ok("HELLO")),
           equals(true));
+      expect(okString.isEqual(Ok("hello")), equals(true));
     });
     test("flatmap working correctly for Error", () {
       expect(
@@ -77,31 +139,48 @@ void main() {
       expect(Ok(1).flatmapError((x) => Ok(x + 1)).isEqual(Ok(1)), equals(true));
     });
     test("flatmapError working correctly for Error", () {
+      var errorInt = Error(1);
+
       expect(
-          Error(1).flatmapError((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
-      expect(Error(1).flatmapError((x) => Error(x + 1)).isEqual(Error(2)),
+          errorInt.flatmapError((x) => Ok(x + 1)).isEqual(Ok(2)), equals(true));
+      expect(errorInt.isEqual(Error(1)), equals(true));
+
+      expect(errorInt.flatmapError((x) => Error(x + 1)).isEqual(Error(2)),
           equals(true));
+      expect(errorInt.isEqual(Error(1)), equals(true));
     });
   });
 
   group("bimap working correctly", () {
     test("bimap working correctly for Ok", () {
+      var okInt = Ok(1);
+      var okString = Ok("hello");
+
       expect(
-          Ok(1).bimap((x) => x + 1, (e) => e + 2).isEqual(Ok(2)), equals(true));
+          okInt.bimap((x) => x + 1, (e) => e + 2).isEqual(Ok(2)), equals(true));
+      expect(okInt.isEqual(Ok(1)), equals(true));
+
       expect(
-          Ok("Hello")
+          okString
               .bimap((x) => x.toUpperCase(), (e) => e.toLowerCase())
               .isEqual(Ok("HELLO")),
           equals(true));
+      expect(okString.isEqual(Ok("hello")), equals(true));
     });
     test("bimap working correctly for Error", () {
-      expect(Error(1).bimap((x) => x + 1, (e) => e + 2).isEqual(Error(3)),
+      var errorInt = Error(1);
+      var errorString = Error("hello");
+
+      expect(errorInt.bimap((x) => x + 1, (e) => e + 2).isEqual(Error(3)),
           equals(true));
+      expect(errorInt.isEqual(Error(1)), equals(true));
+
       expect(
-          Error("Hello")
+          errorString
               .bimap((x) => x.toUpperCase(), (e) => e.toLowerCase())
               .isEqual(Error("hello")),
           equals(true));
+      expect(errorString.isEqual(Error("hello")), equals(true));
     });
   });
 
@@ -158,53 +237,6 @@ void main() {
       expect(aResult.isEqual(Error(1)), equals(true));
       expect(xCalled, equals(false));
       expect(eCalled, equals(true));
-    });
-  });
-
-  group("getOk working correctly", () {
-    test("getOk for Ok", () {
-      expect(Ok(1).getOk().isEqual(Some(1)), equals(true));
-    });
-    test("getOk for Error", () {
-      expect(Error(1).getOk().isEqual(None()), equals(true));
-    });
-  });
-
-  group("getError working correctly", () {
-    test("getError for Ok", () {
-      expect(Ok(1).getError().isEqual(None()), equals(true));
-    });
-    test("getError for Error", () {
-      expect(Error(1).getError().isEqual(Some(1)), equals(true));
-    });
-  });
-
-  group("getOrElse working correctly", () {
-    test("getOrElse for Ok", () {
-      expect(Ok(1).getOrElse(2), equals(1));
-    });
-    test("getOrElse for Error", () {
-      expect(Error(1).getOrElse(2), equals(2));
-    });
-  });
-
-  group("getErrorOrElse working correctly", () {
-    test("getErrorOrElse for Ok", () {
-      expect(Ok(1).getErrorOrElse(2), equals(2));
-    });
-    test("getErrorOrElse for Error", () {
-      expect(Error(1).getErrorOrElse(2), equals(1));
-    });
-  });
-
-  group("printing override working correctly", () {
-    test("printing override working correctly for Ok", () {
-      expect(Ok(1).toString(), equals("Ok(1)"));
-      expect(Ok("hello").toString(), equals("Ok(hello)"));
-    });
-    test("printing override working correctly for Error", () {
-      expect(Error(1).toString(), equals("Error(1)"));
-      expect(Error("hello").toString(), equals("Error(hello)"));
     });
   });
 }
