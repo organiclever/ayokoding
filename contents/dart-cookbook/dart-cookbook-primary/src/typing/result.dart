@@ -165,18 +165,96 @@ class Error<T, U> extends Result<T, U> {
 }
 
 void main() {
-  Result<int, String> okNumber = Ok(1);
-  Result<String, int> okString = Ok("hello");
-  Result<String, int> errorNumber = Error(404);
-  Result<String, String> errorString = Error("not found");
+  Result<String, ({int status, String message})> okRes = Ok("hello world!");
+  Result<String, ({int status, String message})> errorRes =
+      Error((status: 404, message: "URL not found"));
 
-  print(okNumber); // Output: Ok(1)
-  print(okString); // Output: Ok(hello)
-  print(errorNumber); // Output: Error(404)
-  print(errorString); // Output: Error(not found)
+  print(okRes); // Output: Ok(hello world!)
+  print(errorRes); // Output: Error((message: URL not found, status: 404)))
 
-  print(okNumber.isOk()); // Output: true
-  print(okNumber.isError()); // Output: false
-  print(errorNumber.isOk()); // Output: false
-  print(errorNumber.isError()); // Output: true
+  print(okRes.isOk()); // Output: true
+  print(okRes.isError()); // Output: false
+  print(errorRes.isOk()); // Output: false
+  print(errorRes.isError()); // Output: true
+
+  print(okRes.isEqual(Ok("hello world!"))); // Output: true
+  print(errorRes
+      .isEqual(Error((status: 404, message: "URL not found")))); // Output: true
+
+  print(okRes.getOk()); // Output: Some(hello world!)
+  print(okRes.getError()); // Output: None()
+  print(errorRes.getOk()); // Output: None()
+  print(errorRes
+      .getError()); // Output: Some((message: URL not found, status: 404))
+
+  print(okRes.getOrElse("default value")); // Output: hello world!
+  print(errorRes.getOrElse("default value")); // Output: default value
+
+  print(okRes.getErrorOrElse((
+    status: 500,
+    message: "Internal server error",
+  ))); // Output: (message: Internal server error, status: 500)
+  print(errorRes.getErrorOrElse((
+    status: 500,
+    message: "Internal server error",
+  ))); // Output: (message: URL not found, status: 404)
+
+  print(okRes.map((value) => value.toUpperCase())); // Output: Ok(HELLO WORLD!)
+  print(errorRes.map((value) => value
+      .toUpperCase())); // Output: Error((message: URL not found, status: 404))
+
+  print(okRes.mapError((err) => (
+        status: err.status,
+        message: err.message.toUpperCase()
+      ))); // Output: Ok(hello world!)
+  print(errorRes.mapError((err) => (
+        status: err.status,
+        message: err.message.toUpperCase()
+      ))); // Output: Error((message: URL NOT FOUND, status: 404))
+
+  print(okRes
+      .flatmap((value) => Ok(value.toUpperCase()))); // Output: Ok(HELLO WORLD!)
+  print(errorRes.flatmap((value) => Ok(value
+      .toUpperCase()))); // Output: Error((message: URL not found, status: 404))
+
+  print(okRes.flatmapError((err) => Error((
+        status: 500,
+        message: err.message.toUpperCase()
+      )))); // Output: Ok(hello world!)
+  print(errorRes.flatmapError((err) => Error((
+        status: err.status,
+        message: err.message.toUpperCase()
+      )))); // Output: Error((message: URL NOT FOUND, status: 404))
+
+  print(okRes.bimap(
+      (value) => value.toUpperCase(),
+      (err) => (
+            status: err.status,
+            message: err.message.toUpperCase()
+          ))); // Output: Ok(HELLO WORLD!)
+  print(errorRes.bimap(
+      (value) => value.toUpperCase(),
+      (err) => (
+            status: err.status,
+            message: err.message.toUpperCase()
+          ))); // Output: Error((message: URL NOT FOUND, status: 404))
+
+  print(okRes.tap((value) =>
+      print(value))); // Output: print hello world! then Ok(hello world!)
+  print(errorRes.tap((value) =>
+      print(value))); // Output: Error((message: URL not found, status: 404))
+
+  print(
+      okRes.tapError((err) => print(err.message))); // Output: Ok(hello world!)
+  print(errorRes.tapError((err) => print(err
+      .message))); // Output: print URL not found then Error((message: URL not found, status: 404))
+
+  print(okRes.bitap(
+      (value) => print(value),
+      (err) => print(
+          err.message))); // Output: print hello world! then Ok(hello world!)
+  print(errorRes.bitap(
+      (value) => print(value),
+      (err) => print(err
+          .message))); // Output: print URL not found then Error((message: URL not found, status: 404)
 }
