@@ -23,7 +23,6 @@ void main() {
     print(err.ex.runtimeType);
     print(err.st.runtimeType);
   });
-  // Output:
-  // NoSuchMethodError
-  // _StackTrace
+
+  print(double.infinity);
 }
