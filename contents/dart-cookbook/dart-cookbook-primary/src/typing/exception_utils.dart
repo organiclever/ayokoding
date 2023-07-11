@@ -20,9 +20,7 @@ void main() {
   print(res.isOk()); // Output: false
 
   res.tapError((err) {
-    print(err.ex.runtimeType);
-    print(err.st.runtimeType);
+    print(err.ex.runtimeType); // Output: NoSuchMethodError
+    print(err.st.runtimeType); // Output: _StackTrace
   });
-
-  print(double.infinity);
 }
