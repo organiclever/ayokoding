@@ -23,4 +23,8 @@ void main() {
     print(err.ex.runtimeType); // Output: NoSuchMethodError
     print(err.st.runtimeType); // Output: _StackTrace
   });
+
+  res.mapError((e) => e.ex).tapError((err) {
+    print(err.runtimeType); // Output: NoSuchMethodError
+  });
 }
