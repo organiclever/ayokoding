@@ -11,20 +11,30 @@ Result<T, ({Object ex, StackTrace st})> tryCatch<T>(T Function() operation) {
 
 void main() {
   // this will wrap exception in Result type
-  var res = tryCatch<bool>(() {
+  var resError = tryCatch<bool>(() {
     dynamic foo = true;
     return foo++;
   });
 
-  print(res.isError()); // Output: true
-  print(res.isOk()); // Output: false
+  print(resError.isError()); // Output: true
+  print(resError.isOk()); // Output: false
 
-  res.tapError((err) {
+  resError.tapError((err) {
     print(err.ex.runtimeType); // Output: NoSuchMethodError
     print(err.st.runtimeType); // Output: _StackTrace
   });
 
-  res.mapError((e) => e.ex).tapError((err) {
+  resError.mapError((e) => e.ex).tapError((err) {
     print(err.runtimeType); // Output: NoSuchMethodError
+  });
+
+  var resOk = tryCatch(() => "Hello".toLowerCase());
+
+  resOk
+      .map((x) => x * 2)
+      .map((x) => x + "!")
+      .map((x) => x.toUpperCase())
+      .tap((x) {
+    print(x); // Output: HELLOHELLO!
   });
 }
