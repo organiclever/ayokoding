@@ -11,6 +11,23 @@
 ;; Delay - I may not need to calculate this
 ;; ---
 
+;; make a delay that does some calculation
+(defn- long-calculation [arg]
+  (println "Starting long calculation")
+  (Thread/sleep 2000)
+  arg)
+(def the-answer (delay (* 100 (long-calculation 45))))
+
+;; that long calculation has not been done at this point
+
+(when true
+  ;; the thread will block until the answer is calculated
+  (println (str "the answer is: " (deref the-answer)))
+  (deref the-answer))
+;; => 4500
+
+;; if you don't need the answer, it was never run
+
 ;; ---
 ;; Promise - I'll check back here for the answer
 ;; ---
