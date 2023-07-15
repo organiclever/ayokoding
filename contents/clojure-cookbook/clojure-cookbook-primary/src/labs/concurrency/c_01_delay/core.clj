@@ -1,4 +1,4 @@
-(ns labs.concurrency.c-delay.core)
+(ns labs.concurrency.c-01-delay.core)
 
 ;; ---
 ;; Delay - I may not need to calculate this

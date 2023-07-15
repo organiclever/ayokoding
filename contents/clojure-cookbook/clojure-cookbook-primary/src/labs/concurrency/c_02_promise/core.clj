@@ -1,4 +1,4 @@
-(ns labs.concurrency.c-promise.core)
+(ns labs.concurrency.c-02-promise.core)
 
 ;; make a Promise
 (def the-answer (promise))
