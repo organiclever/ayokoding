@@ -4,6 +4,10 @@
 ;; https://ericnormand.me/guide/clojure-concurrency
 
 ;; ---
+;; I - Catalog of primitives
+;; ---
+
+;; ---
 ;; Delay - I may not need to calculate this
 ;; ---
 
@@ -68,6 +72,26 @@
 
 ;; ---
 ;; Fork/Join - Break your work into chunks, do the chunks on your cores, put them back together
+;; ---
+
+;; ---
+;; II - Concurrency vs parallelism
+;; ---
+
+;; ---
+;; III - JVM Thread model
+;; ---
+
+;; ---
+;; IV - Immutable data structures
+;; ---
+
+;; ---
+;; V - Pure Functions
+;; ---
+
+;; ---
+;; VI - Independence
 ;; ---
 
 
