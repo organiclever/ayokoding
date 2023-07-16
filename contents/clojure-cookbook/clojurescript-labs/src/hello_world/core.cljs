@@ -4,8 +4,12 @@
 (defn average [x y]
   (/ (+ x y) 2))
 
+(def state (atom {:count 0}))
+
 (.render js/ReactDOM
-         (.createElement js/React "h2" nil (str "Hello??? React!!! " (average 20 20)))
+         (.createElement js/React "h2" nil (str "Hello??? React!!!! " (average 20 (:count @state))))
          (.getElementById js/document "app"))
 
-(js/console.log {:hello "world"})
+(swap! state update :count inc)
+
+(js/console.log (:count @state))
