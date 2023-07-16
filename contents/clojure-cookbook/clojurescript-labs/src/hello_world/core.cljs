@@ -1,10 +1,9 @@
-(ns hello-world.core)
+(ns hello-world.core
+  (:require react-dom))
 
-(println "Hello world!")
+(defn average [x y]
+  (/ (+ x y) 2))
 
-;; ADDED
-(defn average [a b]
-  (/ (+ a b) 2.0))
-(average 20 13)
-
-(js/console.log average 20 13);
+(.render js/ReactDOM
+         (.createElement js/React "h2" nil (str "Hello??? React!" (average 20 13)))
+         (.getElementById js/document "app"))
