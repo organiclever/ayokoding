@@ -1,21 +1,16 @@
-(ns hello-world.core
-  (:require react-dom))
+(ns hello-world.core)
 
 (def state (atom {:count 0}))
 
-(defn render []
-  (set! (.-innerHTML (.getElementById js/document "app")) (str "Hello! \n count: " (:count @state))))
+(defn render [app-state]
+  (set! (.-innerHTML (.getElementById js/document "app")) (str "Hello! \n count: " (:count app-state))))
 
-(defn handle-change [_ _ _ new-value]
-  (println (str "The new value is: " new-value))
-  (render)
-  (js/console.log "The new value is:" new-value))
+(defn handle-state-change [_ _ _ new-state]
+  (render new-state))
 
-(add-watch state :main-state handle-change)
+(add-watch state :main-state handle-state-change)
 
 (swap! state update :count inc)
-
-(js/console.log (:count @state))
 
 (comment
   (swap! state (fn [_]
