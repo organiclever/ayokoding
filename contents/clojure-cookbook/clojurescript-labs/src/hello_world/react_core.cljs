@@ -1,10 +1,13 @@
-(ns hello-world.core
+(ns hello-world.react-core
   (:require react-dom))
 
 (def state (atom {:count 0}))
 
+#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn render []
-  (set! (.-innerHTML (.getElementById js/document "app")) (str "Hello! \n count: " (:count @state))))
+  (.render js/ReactDOM
+           (.createElement js/React "h2" nil (str "Hello??? React!!!! \n count: " (:count @state)))
+           (.getElementById js/document "app")))
 
 (defn handle-change [_ _ _ new-value]
   (println (str "The new value is: " new-value))
