@@ -5,5 +5,5 @@
   (/ (+ x y) 2))
 
 (.render js/ReactDOM
-         (.createElement js/React "h2" nil (str "Hello??? React!" (average 20 13)))
+         (.createElement js/React "h2" nil (str "Hello??? React! " (average 20 20)))
          (.getElementById js/document "app"))
