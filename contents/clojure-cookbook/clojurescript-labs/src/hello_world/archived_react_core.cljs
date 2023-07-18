@@ -1,4 +1,4 @@
-(ns hello-world.react-core
+(ns hello-world.archived-react-core
   (:require react-dom))
 
 (def state (atom {:count 0}))

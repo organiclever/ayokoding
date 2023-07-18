@@ -12,6 +12,9 @@
 
 (swap! state update :count inc)
 
+(.getElementById js/document "app")
+(set! (.-innerHTML (.getElementById js/document "app")) (str "Hello! \n count: "))
+
 (comment
   (swap! state (fn [_]
                  {:count 0})))
