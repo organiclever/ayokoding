@@ -4,7 +4,7 @@
 
 (defn render [app-state]
   (set! (.-innerHTML (.getElementById js/document "app"))
-        (str "Hello! \n count: " (:count app-state))))
+        (str "Hello! \n Current count: " (:count app-state))))
 
 (defn handle-state-change [_ _ _ new-state]
   (render new-state))
