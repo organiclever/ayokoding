@@ -2,6 +2,9 @@
 
 (def state (atom {:count 0}))
 
+(defn restart-app []
+  (swap! state (fn [x] x)))
+
 (defn render [app-state]
   (set! (.-innerHTML (.getElementById js/document "app"))
         (str "Hello! \n Current count: " (:count app-state))))
@@ -14,6 +17,7 @@
 (swap! state update :count inc)
 
 (comment
-  (swap! state (fn [_]
-                 {:count 0}))
+  (swap! state (fn [{:keys [count]}]
+                 {:count count}))
+  (restart-app)
   (js/alert "hello"))
