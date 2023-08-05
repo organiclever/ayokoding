@@ -1,9 +1,16 @@
-{:deps
- {org.clojure/tools.reader {:mvn/version "1.3.6"}
-  com.google.guava/guava {:mvn/version "30.1.1-jre"}}
+{:deps    {org.clojure/tools.reader {:mvn/version "1.3.6"}
+           com.google.guava/guava {:mvn/version "30.1.1-jre"}
+           io.github.cognitect-labs/test-runner {:git/tag "v0.5.1"
+                                                 :git/sha "dfb30dd"}
+           clj-commons/clj-yaml {:mvn/version "1.0.26"}
+           clj-http/clj-http {:mvn/version "3.12.3"}
+           org.clojure/data.json {:mvn/version "2.4.0"}
+           ring/ring-codec {:mvn/version "1.2.0"}}
 
- :aliases
- {:my-fn
-  {:exec-fn hello-world/run
-   :exec-args {:my {:data 123}
-               :config 456}}}}
+ :aliases {:dev {:extra-paths ["test"]}
+           :run  {:exec-fn core/-main}
+           :test {:extra-paths ["test"]
+                  :extra-deps  {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1"
+                                                                      :git/sha "dfb30dd"}}
+                  :main-opts   ["-m" "cognitect.test-runner"]
+                  :exec-fn     cognitect.test-runner.api/test}}}
