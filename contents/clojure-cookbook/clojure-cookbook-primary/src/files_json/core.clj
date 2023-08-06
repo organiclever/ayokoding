@@ -38,8 +38,6 @@ kw-json-data
 ;; => clojure.lang.PersistentArrayMap
 (select-keys kw-json-data [:name :age :email :interests])
 ;; => {:name "John Doe", :age 30, :email "john.doe@example.com", :interests ["programming" "reading" "hiking"]}
-(kw-json-data :address)
-;; => {:street "123 Main St", :city "New York", :state "NY", :zip "10001"}
 (get-in kw-json-data [:address :street])
 ;; => "123 Main St"
 
@@ -48,20 +46,23 @@ kw-json-data
 (spit "data_set/example_write_non_kw.json" (json/write-str non-kw-json-data))
 (slurp "data_set/example_write_non_kw.json")
 ;; => "{\"name\":\"John Doe\",\"age\":30,\"email\":\"john.doe@example.com\",\"address\":{\"street\":\"123 Main St\",\"city\":\"New York\",\"state\":\"NY\",\"zip\":\"10001\"},\"interests\":[\"programming\",\"reading\",\"hiking\"]}"
+
+;; the written file's parsed json data is the same as the original file's parsed json data
 (= (json/read-str (slurp "data_set/example_write_non_kw.json")) non-kw-json-data)
 ;; => true
-(type (kw-json-data :interests))
-;; => clojure.lang.PersistentVector
 
 (spit "data_set/example_write_kw.json" (json/write-str kw-json-data))
 (slurp "data_set/example_write_kw.json")
 ;; => "{\"name\":\"John Doe\",\"age\":30,\"email\":\"john.doe@example.com\",\"address\":{\"street\":\"123 Main St\",\"city\":\"New York\",\"state\":\"NY\",\"zip\":\"10001\"},\"interests\":[\"programming\",\"reading\",\"hiking\"]}"
+
+;; the written file's parsed json data is the same as the original file's parsed json data
 (= (json/read-str (slurp "data_set/example_write_kw.json") :key-fn keyword) kw-json-data)
 ;; => true
+
+;; the written files are the same for non-keyword and keyword json data
 (= (slurp "data_set/example_write_non_kw.json")
    (slurp "data_set/example_write_kw.json"))
 ;; => true
 
 ;; pretty printing when writing JSON files
-
 (spit "data_set/example_write_pretty.json" (with-out-str (clojure.data.json/pprint kw-json-data)))
