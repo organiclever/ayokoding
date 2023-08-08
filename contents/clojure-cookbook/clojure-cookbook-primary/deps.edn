@@ -9,7 +9,13 @@
            com.github.seancorfield/next.jdbc {:mvn/version "1.3.883"}
            org.xerial/sqlite-jdbc {:mvn/version "3.42.0.0"}
            org.postgresql/postgresql {:mvn/version "42.6.0"}
-           com.h2database/h2 {:mvn/version "2.2.220"}}
+           com.h2database/h2 {:mvn/version "2.2.220"}
+           io.pedestal/pedestal.service {:mvn/version "0.5.7"}
+           io.pedestal/pedestal.route   {:mvn/version "0.5.7"}
+           io.pedestal/pedestal.jetty   {:mvn/version "0.5.7"}
+           org.slf4j/slf4j-simple       {:mvn/version "1.7.28"}}
+
+ :paths   ["src"]
 
  :aliases {:dev {:extra-paths ["test"]}
            :run  {:exec-fn core/-main}
