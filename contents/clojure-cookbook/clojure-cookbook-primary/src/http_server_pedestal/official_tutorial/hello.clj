@@ -1,4 +1,4 @@
-(ns http-server-pedestal.hello
+(ns http-server-pedestal.official-tutorial.hello
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]))
 
