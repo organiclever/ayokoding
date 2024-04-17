@@ -1,5 +1,9 @@
 # list creation
 
+import copy
+from functools import reduce
+
+
 my_list = [1, 2, 3, 4, 5]
 
 # indexing
@@ -90,4 +94,26 @@ print(my_list)  # Output: [5, 4, 3, 2, 1]
 
 my_list = [1, 2, 3]
 copy_list = my_list.copy()
+print(my_list)  # Output: [1, 2, 3]
 print(copy_list)  # Output: [1, 2, 3]
+copy_list[0] = 10
+print(my_list)  # Output: [1, 2, 3]
+print(copy_list)  # Output: [10, 2, 3]
+
+# iteration - using for
+
+my_list = [1, 2, 3, 4, 5]
+for item in my_list:  # Output: 1 2 3 4 5
+    print(item)
+
+# iteration - using map
+
+my_list = [1, 2, 3, 4, 5]
+result = map(lambda x: x * 2, my_list)
+print(list(result))  # Output: [2, 4, 6, 8, 10]
+
+# iteration - using reduce
+
+my_list = [1, 2, 3, 4, 5]
+result = reduce(lambda x, y: x + y, my_list)
+print(result)  # output: 15
