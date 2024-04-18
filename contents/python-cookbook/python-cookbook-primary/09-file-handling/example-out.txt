@@ -1,0 +1,2 @@
+This is an example file.
+Hello, World!This is a new line
