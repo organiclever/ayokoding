@@ -6,6 +6,7 @@
     "prepare": "husky install && clj -Ttools install io.github.weavejester/cljfmt '{:git/tag \"0.10.4\"}' :as cljfmt",
     "lint:clj": "clj-kondo --lint apps libs src --config .clj-kondo/config.edn",
     "lint": "npm run lint:clj",
+    "dev:clojure-cookbook:primary": "cd contents/clojure-cookbook && clj -M repl"
     "hooks:pre-push": "npm run lint"
   },
   "devDependencies": {
